@@ -5,7 +5,7 @@ var redSleeperAgents = 0,
     round = 0,
     winner = 'blue', //'red' is a user input, default blue
     currentPlayer = "blueSM", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
-    currentStartingTeam = "blue", //vs "red"
+    latestStartingTeam = "red", //vs "red"
     board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red',
@@ -33,29 +33,28 @@ var redSleeperAgents = 0,
 function setBoard() {}
 
 for ( var i = 0; i < 25; i++ ) {
-  var numWord = Math.floor( Math.random() * wordArray.length ),
-      numColor = Math.floor( Math.random() * blueFirst.length );
+  var numWord = Math.floor( Math.random() * wordArray.length );
 
   board[i].word = wordArray[numWord];
   wordArray.splice( (numWord), 1 );
 
   board[i].state = false;
 
-  switch(currentStartingTeam) {
-    case "red":
+  if (latestStartingTeam === "red") {
+      var numColor = Math.floor( Math.random() * blueFirst.length );
       board[i].color = blueFirst[numColor];
       blueFirst.splice( (numColor), 1 );
       blueSleeperAgents = 9;
       redSleeperAgents = 8;
-      break;
-    case "blue"
+      latestStartingTeam = "blue";
+    } else {
+      var numColor = Math.floor( Math.random() * redFirst.length );
       board[i].color = redFirst[numColor];
       redFirst.splice( (numColor), 1 );
       redSleeperAgents = 9;
       blueSleeperAgents = 8;
-      break;
-    default:
-      console.log("unexpected error on currentStartingTeam")
+      latestStartingTeam = "red";
+    };
 };
 
 /* Behavior */
@@ -76,11 +75,32 @@ switch(currentPlayer) {
       currentPlayer = "blueSM";
       break;
     default:
-      console.log("error on current player")
+      console.log("error on current player");
 };
 
 // 2. MOVES
 //    a. Spymaster move
+
+function moves() {};
+
+switch(currentPlayer) {
+  case "blueSM":
+      return = #blueteam word/num input#;
+      break;
+    case "blueFA":
+      return = #blueteam click input#;
+      break;
+    case "redSM":
+      return = #redteam word/num input#;
+      break;
+    case "redFA":
+      return = #blueteam click input#;
+      break;
+    default:
+      console.log("error on player move");
+};
+
+
 //    b. field agent move
 
 
