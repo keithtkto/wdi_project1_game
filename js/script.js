@@ -53,10 +53,26 @@ for ( var i = 0; i < 25; i++ ) {
 
 };
 
-
-
-
 /* Behavior */
+
+// 1. turns of the game  (day1)blueSM --> blueFA --> redSM -->redFA -->(day2) blueSM
+
+switch(currentPlayer) {
+    case "blueSM":
+      currentPlayer = "blueFA";
+      break;
+    case "blueFA":
+      currentPlayer = "redSM";
+      break;
+    case "redSM":
+      currentPlayer = "redFA";
+      break;
+    case "redFA":
+      currentPlayer = "blueSM";
+      break;
+    default:
+      console.log("error on current player")
+};
 
 
 
