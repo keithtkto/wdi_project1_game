@@ -1,8 +1,9 @@
 
 // global var
-var redTeam = 0,
-    blueTeam = 0,
+var redSleeperAgents = 0,
+    blueSleeperAgents = 0,
     round = 0,
+    winner = 'blue' //'red'
     currentPlayer = "blueSM" //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
     board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
@@ -42,13 +43,13 @@ for ( var i = 0; i < 25; i++ ) {
   if (round % 2 === 0) {
     board[i].color = blueFirst[numColor];
     blueFirst.splice( (numColor), 1 );
-    blueTeam = 9;
-    redTeam = 8;
+    blueSleeperAgents = 9;
+    redSleeperAgents = 8;
   } else {
     board[i].color = redFirst[numColor];
     redFirst.splice( (numColor), 1 );
-    redTeam = 9;
-    blueTeam = 8;
+    redSleeperAgents = 9;
+    blueSleeperAgents = 8;
   };
 
 };
@@ -73,6 +74,33 @@ switch(currentPlayer) {
     default:
       console.log("error on current player")
 };
+
+// win condition
+if (blueSleeperAgents === 0) {
+  winner = 'blue team';
+} else if (redSleeperAgents === 0) {
+  winner = 'red team';
+};
+
+//loss condition
+
+if (currentPlayer === "blueFA" and select "black") {
+  winner = "red team";
+} else if (currentPlayer === "redFA" and select "black") {
+  winner = "blue team";
+}
+
+
+//ending a round
+//1. ending by running out of moves
+//2. selecting wrong sleeper agent
+  if (currentPlayer === "blueFA" && box selected !== "blue" ) {
+    round ends
+  } (currentPlayer === "redFA" && box selected !== "red" ) {
+    round ends
+  }
+
+//3. end by player decision (player interaction)
 
 
 
