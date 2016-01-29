@@ -1,15 +1,36 @@
 
 // global var
-var board = [],
+var round = 0,
+    board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-                'red', 'red', 'red', 'red', 'red', 'red', 'red', 'white', 'white',
-                 'white', 'white', 'white', 'white', 'white', 'white', 'white',
-                  'white', 'white', 'white', 'white', 'white', 'white', 'black']
+                'red', 'red', 'red', 'red', 'red', 'red', 'red',
+                'white', 'white', 'white', 'white', 'white', 'white', 'white',
+                'white', 'white', 'black'],
+    redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+                'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
+                'white', 'white', 'white', 'white', 'white', 'white', 'white',
+                'white', 'white', 'black'];
 
-// 1. Random word generator
-// 2. remove word from word list
+
+// 1. Random word generator and remove the selected words from word list
+// 2. change board into arrays of object {color, state, word}
+// 3. add board state (true = clicked/false = not clicked)
+// 4. add color to board depending on round, even = blue first / odd = red first
 for ( var i = 0; i < 25; i++ ) {
-  var num = Math.floor( Math.random() * wordArray.length );
-  board.push( wordArray[num] );
-  wordArray.splice( (num), 1 );
-}
+  var numWord = Math.floor( Math.random() * wordArray.length ),
+      numColor = Math.floor( Math.random() * blueFirst.length );
+
+  board[i].word = wordArray[numWord];
+  wordArray.splice( (numWord), 1 );
+
+  board[i].state = false;
+
+  if (round % 2 === 0) {
+    board[i].color = blueFirst[numColor];
+    blueFirst.splice( (numColor), 1 );
+  } else {
+    board[i].color = redFirst[numColor];
+    redFirst.splice( (numColor), 1 );
+  };
+
+};
