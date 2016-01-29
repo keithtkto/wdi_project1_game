@@ -3,8 +3,9 @@
 var redSleeperAgents = 0,
     blueSleeperAgents = 0,
     round = 0,
-    winner = 'blue' //'red'
-    currentPlayer = "blueSM" //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
+    winner = 'blue', //'red' is a user input, default blue
+    currentPlayer = "blueSM", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
+    currentStartingTeam = "blue", //vs "red"
     board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red',
@@ -40,18 +41,21 @@ for ( var i = 0; i < 25; i++ ) {
 
   board[i].state = false;
 
-  if (round % 2 === 0) {
-    board[i].color = blueFirst[numColor];
-    blueFirst.splice( (numColor), 1 );
-    blueSleeperAgents = 9;
-    redSleeperAgents = 8;
-  } else {
-    board[i].color = redFirst[numColor];
-    redFirst.splice( (numColor), 1 );
-    redSleeperAgents = 9;
-    blueSleeperAgents = 8;
-  };
-
+  switch(currentStartingTeam) {
+    case "red":
+      board[i].color = blueFirst[numColor];
+      blueFirst.splice( (numColor), 1 );
+      blueSleeperAgents = 9;
+      redSleeperAgents = 8;
+      break;
+    case "blue"
+      board[i].color = redFirst[numColor];
+      redFirst.splice( (numColor), 1 );
+      redSleeperAgents = 9;
+      blueSleeperAgents = 8;
+      break;
+    default:
+      console.log("unexpected error on currentStartingTeam")
 };
 
 /* Behavior */
@@ -75,6 +79,14 @@ switch(currentPlayer) {
       console.log("error on current player")
 };
 
+// 2. MOVES
+//    a. Spymaster move
+//    b. field agent move
+
+
+
+
+
 // win condition
 if (blueSleeperAgents === 0) {
   winner = 'blue team';
@@ -82,11 +94,11 @@ if (blueSleeperAgents === 0) {
   winner = 'red team';
 };
 
-//loss condition
+//Immediate loss (8-ball) condition
 
-if (currentPlayer === "blueFA" and select "black") {
+if (currentPlayer === #"blueFA" and select "black"#) {
   winner = "red team";
-} else if (currentPlayer === "redFA" and select "black") {
+} else if (currentPlayer === #"redFA" and select "black"#) {
   winner = "blue team";
 }
 
@@ -94,9 +106,9 @@ if (currentPlayer === "blueFA" and select "black") {
 //ending a round
 //1. ending by running out of moves
 //2. selecting wrong sleeper agent
-  if (currentPlayer === "blueFA" && box selected !== "blue" ) {
+  if (currentPlayer === "blueFA" && #box selected# !== "blue" ) {
     round ends
-  } (currentPlayer === "redFA" && box selected !== "red" ) {
+  } (currentPlayer === "redFA" && #box selected# !== "red" ) {
     round ends
   }
 
