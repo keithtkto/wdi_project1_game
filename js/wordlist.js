@@ -1,4 +1,8 @@
-console.log("Wordlist Go!")
+console.log('RETRO GO')
+console.log('FIDO GO');
+console.log('GUIDANCE GO');
+console.log('FCONTROL GO');
+
 
 var wordArray = ['DAY', 'MILLIONAIRE', 'MAMMOTH', 'COMIC', 'HEAD', 'LITTER',
                 'STREAM', 'GLOVE', 'CENTAUR', 'SHADOW', 'WAVE', 'CAR', 'ENGINE', 'SHAKESPEARE',

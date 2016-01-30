@@ -1,4 +1,9 @@
-console.log("Javascripts Go!")
+console.log("TELCOM GO");
+console.log("GNC GO");
+console.log("EECOM GO");
+console.log("SURGEON GO");
+console.log("CAPCOM, We're GO for Powered Descent.");
+
 
 // global var
 var redSleeperAgents = 0,

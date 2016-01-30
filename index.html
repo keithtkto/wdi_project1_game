@@ -4,11 +4,131 @@
   <meta charset="UTF-8">
   <title>NOC LIST//CODENAMES</title>
   <link rel="shortcut icon" href="assets/spy.ico">
-  <link rel"stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 </head>
 <body>
+<div class="top">
+  <h1>
+  NOC LIST || CODENAMES
+  </h1>
 
+
+</div>
+
+<div class="center">
+  <div class="powermac blue" id="bluemac">
+    <h4>
+      __CLUES:__
+    </h4>
+
+    <ul class="clues" id="clueBlue">
+    </ul>
+    <h5>
+      REMAINING <br>SLEEPER AGENTS<br>9
+    </h5>
+    <form id="wordclue">
+      <textarea id="textarea" class="word-text" placeholder="Enter your single word clue here"></textarea>
+      <select>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="Inifinite">Infinite</option>
+      </select>
+      <input id="send-button" type="submit" value="SEND!">
+    </form>
+
+  </div>
+  <div class="powermac red" id="redmac">
+    <h4>
+      __CLUES:__
+    </h4>
+    <ul class="clues" id="clueRed">
+    </ul>
+
+    <h5>
+      REMAINING <br>SLEEPER AGENTS<br>9
+    </h5>
+
+    <form id="wordclue">
+      <textarea id="textarea" class="word-text" placeholder="Enter your single word clue here"></textarea>
+      <select>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="Inifinite">Infinite</option>
+      </select>
+      <input id="send-button" type="submit" value="SEND!">
+    </form>
+
+  </div>
+
+  <main class="middlebox">
+
+    <div class="word_box" id="box0">1</div>
+    <div class="word_box" id="box1">2</div>
+    <div class="word_box" id="box2">3</div>
+    <div class="word_box" id="box3">4</div>
+    <div class="word_box" id="box4">5</div>
+    <div class="word_box" id="box5">6</div>
+    <div class="word_box" id="box6">7</div>
+    <div class="word_box" id="box7">8</div>
+    <div class="word_box" id="box8">9</div>
+    <div class="word_box" id="box9">10</div>
+    <div class="word_box" id="box10">11</div>
+    <div class="word_box" id="box11">12</div>
+    <div class="word_box" id="box12">13</div>
+    <div class="word_box" id="box13">14</div>
+    <div class="word_box" id="box14">15</div>
+    <div class="word_box" id="box15">16</div>
+    <div class="word_box" id="box16">17</div>
+    <div class="word_box" id="box17">18</div>
+    <div class="word_box" id="box18">19</div>
+    <div class="word_box" id="box19">20</div>
+    <div class="word_box" id="box20">21</div>
+    <div class="word_box" id="box21">22</div>
+    <div class="word_box" id="box22">23</div>
+    <div class="word_box" id="box23">24</div>
+    <div class="word_box" id="box24">25</div>
+  </main>
+
+</div>
+
+<div class="nav">
+  <button id="rulebook">Rule Book</button>
+  <!-- <button id="refreshBoard">Refresh Words</button> -->
+  <button id="restartGame">Restart Game</button>
+
+
+
+</div>
+
+
+<footer>
+  <p>
+    NOC List is a game inspired by <a href="http://codenamesgame.com/">Codenames</a><br>
+    Designed by Vlaada Chvátil<br>
+    Published by <a href="http://czechgames.com/">Czech Games Edition</a><br>
+    <a href="http://codenamesgame.com/">https://github.com/keithtkto/wdi_project1_game_noc_list.git</a>
+  </p>
+</footer>
 
 
 
