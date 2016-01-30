@@ -1,3 +1,4 @@
+console.log("Javascripts Go!")
 
 // global var
 var redSleeperAgents = 0,
@@ -77,6 +78,7 @@ function setColor() {}
 //    a. Spymaster move
 
 // need work
+/*
 function moves() {};
 switch(currentPlayer) {
   case "blueSM":
@@ -94,7 +96,7 @@ switch(currentPlayer) {
     default:
       console.log("error on player move");
 };
-
+*/
 
 //    b. field agent move
 
@@ -141,17 +143,17 @@ function win() {}
 // VM1218:2 11
 
 //okay
-function searchBlack(state, board) {}
+function searchBlack(state, board) {
     for (var i=0; i < 25; i++) {
         if ( board[i].color === "black") {
             console.log(i)
             return i;
-        }
-    }
-
+        };
+    };
+};
 // loss condition
 
-// need work
+// need work (need to connect with click)
 if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state === true) {
   winner = "red team";
 } else if (currentPlayer === "redFA" && board[11].color === "black" && board[11].state === true) {
@@ -162,12 +164,14 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 //ending a round
 //1. ending by running out of moves
 //2. selecting wrong sleeper agent
+/*
   if (currentPlayer === "blueFA" && #box selected# !== "blue" ) {
     round ends
   } (currentPlayer === "redFA" && #box selected# !== "red" ) {
     round ends
   }
 
+  */
 //3. end by player decision (player interaction)
 
 

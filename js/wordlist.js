@@ -1,3 +1,5 @@
+console.log("Wordlist Go!")
+
 var wordArray = ['DAY', 'MILLIONAIRE', 'MAMMOTH', 'COMIC', 'HEAD', 'LITTER',
                 'STREAM', 'GLOVE', 'CENTAUR', 'SHADOW', 'WAVE', 'CAR', 'ENGINE', 'SHAKESPEARE',
                 'MICROSCOPE', 'JET', 'SUIT', 'CHOCOLATE', 'MUG', 'CONCERT', 'SCORPION', 'CANADA',
