@@ -22,7 +22,7 @@ var redSleeperAgents = 0,
                 'white', 'white', 'white', 'white', 'white', 'white',
                 'white', 'white', 'black'];
 
-
+// jQuery Variable
 
 
 /* Model */
@@ -76,6 +76,18 @@ function setColor() {}
     };
   latestStartingTeam = "red";
   };
+
+// Putting word into correlating boxes
+
+function wordInBox() {}
+for (i= 0; i < 25; i++) {
+  var $word_box = $("<div class='word_box'><p class='words'></p></div>");
+  $word_box.appendTo('.middlebox');
+  $('div>p:last').attr("id", "box" + i)
+  console.log(i);
+  $("#box"+i).text(board[i].word);
+};
+
 
 
 /* Behavior */
@@ -184,4 +196,6 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 /* Render */
 
 /* Player Interaction */
+
+
 
