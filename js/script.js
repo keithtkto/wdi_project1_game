@@ -88,6 +88,14 @@ function setColor() {}
   };
 
 
+  // Putting word into correlating boxes
+function wordInBox() {
+  for (i= 0; i < 25; i++) {
+    $("#box"+i).text(board[i].word);
+  };
+};
+
+
 /* Behavior */
 // 1. MOVES
 //    a. Spymaster move
@@ -195,12 +203,7 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 
 /* Player Interaction */
 
-// Putting word into correlating boxes
-function wordInBox() {
-  for (i= 0; i < 25; i++) {
-    $("#box"+i).text(board[i].word);
-  };
-};
+
 
 // adding event listener
 
@@ -239,6 +242,25 @@ function activate() {
     console.log(board[i].word, board[i].state, board[i].color);
   };
 };
+
+// spymaster submitting clues
+
+function submit() {
+$( "#send-button" ).click(function( evt ) {
+  evt.preventDefault();
+  if (currentPlayer === blueSM ) {
+    var newClue = $('#textareaB').val() + " " + $('select')[0].value;
+    $li = $("<li id='clueB'>").text(newClue);
+    $( "#clueBlue" ).append( $li );
+  } else if (currentPlayer === redSM) {
+    var newClue = $('#textareaR').val() + " " + $('select')[1].value;
+    $li = $("<li id='clueR'>").text(newClue);
+    $( "#clueRed" ).append( $li );
+  }
+});
+
+}
+
 
 
 
