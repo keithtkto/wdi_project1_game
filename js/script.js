@@ -36,23 +36,26 @@ var redSleeperAgents = 0,
 // 3. add color to board depending on round, even = blue first / odd = red first
 
 //okay
-function setBoard() {}
+function setBoard() {
 
-for ( var i = 0; i < 25; i++ ) {
-  var numWord = Math.floor( Math.random() * wordArray.length );
-  // console.log(numWord);
-  board[i].word = wordArray[numWord];
-  // console.log(board[i])
-  wordArray.splice( (numWord), 1 );
+  for ( var i = 0; i < 25; i++ ) {
+    var numWord = Math.floor( Math.random() * wordArray.length );
+    // console.log(numWord);
+    board[i].word = wordArray[numWord];
+    // console.log(board[i])
+    wordArray.splice( (numWord), 1 );
 
-  board[i].state = false;
+    board[i].state = false;
+  };
 };
+setBoard()
 
-// generating the 5x5 board with js
+// generating the 5x5 board with js (done done)
 for (i= 0; i < 25; i++) {
   var $word_box = $("<div class='word_box'><p class='words'></p></div>");
   $word_box.appendTo('.middlebox');
   $('div>p:last').attr("id", "box" + i)
+  $("#box"+i).text("???")
 };
 
 
@@ -83,14 +86,6 @@ function setColor() {}
     };
   latestStartingTeam = "red";
   };
-
-// Putting word into correlating boxes
-
-function wordInBox() {}
-for (i= 0; i < 25; i++) {
-  $("#box"+i).text(board[i].word);
-};
-
 
 
 /* Behavior */
@@ -199,6 +194,28 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 /* Render */
 
 /* Player Interaction */
+
+// Putting word into correlating boxes and adding event listener
+
+function wordInBox() {
+  for (i= 0; i < 25; i++) {
+    $("#box"+i).text(board[i].word);
+    $("#box"+i).on("click", activate )
+  };
+};
+
+// turn board state to false when clicked
+function activate() {
+  console.log( $( this ).text() );
+  for (var i = 0; i <25 ; i++) {
+    if ( board[i].word === $(this).text() ) {
+          board[i].state = true;
+    };
+    console.log(board[i].word, board[i].state, board[i].color);
+  };
+};
+
+
 
 
 
