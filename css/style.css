@@ -117,6 +117,7 @@ a {
   min-width: 120px;
   min-height: 70px;
   border-radius: 7px;
+  margin: 0 auto;
 }
 
 .words {

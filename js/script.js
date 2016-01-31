@@ -48,6 +48,13 @@ for ( var i = 0; i < 25; i++ ) {
   board[i].state = false;
 };
 
+// generating the 5x5 board with js
+for (i= 0; i < 25; i++) {
+  var $word_box = $("<div class='word_box'><p class='words'></p></div>");
+  $word_box.appendTo('.middlebox');
+  $('div>p:last').attr("id", "box" + i)
+};
+
 
 
 // generate random state
@@ -81,10 +88,6 @@ function setColor() {}
 
 function wordInBox() {}
 for (i= 0; i < 25; i++) {
-  var $word_box = $("<div class='word_box'><p class='words'></p></div>");
-  $word_box.appendTo('.middlebox');
-  $('div>p:last').attr("id", "box" + i)
-  console.log(i);
   $("#box"+i).text(board[i].word);
 };
 
