@@ -195,16 +195,41 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 
 /* Player Interaction */
 
-// Putting word into correlating boxes and adding event listener
-
+// Putting word into correlating boxes
 function wordInBox() {
   for (i= 0; i < 25; i++) {
     $("#box"+i).text(board[i].word);
+  };
+};
+
+// adding event listener
+
+function clickOn() {
+  for (i= 0; i < 25; i++) {
     $("#box"+i).on("click", activate )
   };
 };
 
-// turn board state to false when clicked
+//In field agent round, remove event listener if its already been activated (state:true)
+
+function FAclickOff() {
+  for (var i =0; i < 25; i++) {
+    if (board[i].state === true) {
+      $("#box"+i).off()
+    }
+  }
+};
+
+// remove event listener during spy master round
+
+function SMeventOff() {
+  for (var i =0; i < 25; i++) {
+    $("#box"+i).off()
+  };
+};
+
+
+// turn board state from false to true when clicked
 function activate() {
   console.log( $( this ).text() );
   for (var i = 0; i <25 ; i++) {
