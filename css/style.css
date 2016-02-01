@@ -50,6 +50,14 @@ textarea {
   max-width: 120px;
 }
 
+li {
+  text-align: left;
+  list-style-type: none;
+  margin-left: -20px;
+  margin-top: -2px;
+  font-weight: bolder;
+}
+
 footer {
   border: 1px solid brown;
   text-align: center;
@@ -126,6 +134,11 @@ a {
   text-align: center;
   margin-top: 26px;
   background: white;
+}
+
+.infoBox {
+
+
 }
 
 .nav {

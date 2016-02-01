@@ -12,7 +12,8 @@ var redSleeperAgents = 0,
     winner = '', //'blue' 'red' is a user input, default blue
     currentPlayer = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
     latestStartingTeam = "red", //vs "red"
-    board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
+    board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+              {},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 'white', 'white', 'white', 'white', 'white', 'white',
@@ -201,9 +202,24 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 
 /* Render */
 
+// render for field agent
+
+function render() {
+  for (var i =0; i < 25; i++) {
+    if (board[i].state === true) {
+      $('.word_box').eq(i).css('background', board[i].color);
+      $("#box"+i).text("").css('background', board[i].color);
+    }
+  };
+};
+
+
+// render for Spymaster
+
+
+
+
 /* Player Interaction */
-
-
 
 // adding event listener
 
@@ -223,13 +239,7 @@ function FAclickOff() {
   }
 };
 
-// remove event listener during spy master round
 
-function SMeventOff() {
-  for (var i =0; i < 25; i++) {
-    $("#box"+i).off()
-  };
-};
 
 
 // turn board state from false to true when clicked
@@ -238,29 +248,46 @@ function activate() {
   for (var i = 0; i <25 ; i++) {
     if ( board[i].word === $(this).text() ) {
           board[i].state = true;
+
     };
     console.log(board[i].word, board[i].state, board[i].color);
   };
 };
 
-// spymaster submitting clues
+// SPYMASTER CONTROL
 
-function submit() {
-$( "#send-button" ).click(function( evt ) {
-  evt.preventDefault();
-  if (currentPlayer === blueSM ) {
-    var newClue = $('#textareaB').val() + " " + $('select')[0].value;
+// remove event listener during spy master round
+
+function SMeventOff() {
+  for (var i =0; i < 25; i++) {
+    $("#box"+i).off()
+  };
+};
+
+// submit no refresh
+
+function blueSubmit() {
+  $( "#send-buttonB" ).click( function( evt ) {
+    evt.preventDefault();
+    var newClue = $('#textareaB').val() + ' ' + $('select')[0].value;
     $li = $("<li id='clueB'>").text(newClue);
     $( "#clueBlue" ).append( $li );
-  } else if (currentPlayer === redSM) {
-    var newClue = $('#textareaR').val() + " " + $('select')[1].value;
+    });
+};
+
+
+function redSubmit() {
+  $( "#send-buttonR" ).click(function( evt ) {
+    evt.preventDefault();
+    var newClue = $('#textareaR').val() + ' ' + $('select')[1].value;
     $li = $("<li id='clueR'>").text(newClue);
     $( "#clueRed" ).append( $li );
-  }
-});
+  });
+};
 
-}
 
+
+// preventing opposite team to submit
 
 
 
