@@ -226,9 +226,11 @@ function correctAgent() {
   clueValue--
 
   if (currentPlayer === "blueFA" && board[indexClicked].color === "blue") {
+    blueSleeperAgents--
     console.log(clueValue)
     console.log("blue got the correct agent activated")
   } else if (currentPlayer === "redFA" && board[indexClicked].color === "red") {
+    redSleeperAgents--
     console.log(clueValue)
     console.log("red got the correct agent activated")
   };
@@ -353,6 +355,16 @@ function redSubmit() {
   });
 };
 
+
+// remove submit during spy master round
+
+function disableSubmit() {
+  $("input").attr("disabled", true);
+  $("select").attr("disabled", true);
+  $("textarea").attr("disabled", true);
+  $("textarea").attr("placeholder", "Uplinked disabled......")
+  $("input").attr('value', 'DISABLED')
+}
 
 
 // preventing opposite team to submit

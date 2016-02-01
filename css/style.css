@@ -27,16 +27,27 @@ main {
   order: 2;
 }
 
+
+h3 {
+  margin-left: 96px;
+  float: left;
+  display: block;
+  bottom: 88px;
+  position: absolute;
+}
+
 h4 {
   font-weight: bolder;
   text-decoration: underline;
   margin-bottom: -10px;
+  float: left;
 
 }
 
 h5 {
-  margin-left: 18px;
-  margin-right: 13px;
+  margin-left: 14px;
+  /*margin-right: 13px;*/
+  float: left;
   position: absolute;
   bottom: 70px;
 }
@@ -132,6 +143,7 @@ a {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
 
 .infoBox {
   display: block;
