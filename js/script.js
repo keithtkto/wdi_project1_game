@@ -36,6 +36,18 @@ var redSleeperAgents = 0,
 // 2. change board into arrays of object {color, word}
 // 3. add color to board depending on round, even = blue first / odd = red first
 
+// generating the 5x5 board with js (done done)
+function drawBoard() {
+  for (i= 0; i < 25; i++) {
+    var $word_box = $("<div class='word_box'><p class='words'></p></div>");
+    $word_box.appendTo('.middlebox');
+    $('div>p:last').attr("id", "box" + i)
+    $("#box"+i).text("???")
+  };
+};
+
+drawBoard()
+
 //okay
 function setBoard() {
 
@@ -51,13 +63,6 @@ function setBoard() {
 };
 setBoard()
 
-// generating the 5x5 board with js (done done)
-for (i= 0; i < 25; i++) {
-  var $word_box = $("<div class='word_box'><p class='words'></p></div>");
-  $word_box.appendTo('.middlebox');
-  $('div>p:last').attr("id", "box" + i)
-  $("#box"+i).text("???")
-};
 
 
 
@@ -95,6 +100,9 @@ function wordInBox() {
     $("#box"+i).text(board[i].word);
   };
 };
+
+
+wordInBox()
 
 
 /* Behavior */
@@ -178,6 +186,8 @@ function searchBlack(state, board) {
 // loss condition
 
 // need work (need to connect with click)
+
+function eightBall() {}
 if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state === true) {
   winner = "red team";
 } else if (currentPlayer === "redFA" && board[11].color === "black" && board[11].state === true) {
@@ -186,8 +196,12 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 
 
 //ending a round
-//1. ending by running out of moves
+//1. death by 8ball
 //2. selecting wrong sleeper agent
+//3. ending by running out of moves
+
+
+
 /*
   if (currentPlayer === "blueFA" && #box selected# !== "blue" ) {
     round ends
@@ -215,6 +229,8 @@ function renderFA() {
 };
 
 
+// render for Spymaster
+
 function renderSM() {
   for (var i =0; i < 25; i++) {
     $('.word_box').eq(i).css('background', board[i].color)
@@ -225,27 +241,27 @@ function renderSM() {
 };
 
 
-// render for Spymaster
-
 
 
 
 /* Player Interaction */
 
-// adding event listener
+// adding event listener on the words
 
-function clickOn() {
+function clickOnFA() {
   for (i= 0; i < 25; i++) {
-    $("#box"+i).on("click", activate )
+    $("#box"+i).on("click", activate );
+    $('.word_box').eq(i).on("click", activate );
   };
 };
 
 //In field agent round, remove event listener if its already been activated (state:true)
 
-function FAclickOff() {
+function clickOffFA() {
   for (var i =0; i < 25; i++) {
     if (board[i].state === true) {
       $("#box"+i).off()
+      $('.word_box').eq(i).off()
     }
   }
 };
@@ -269,9 +285,10 @@ function activate() {
 
 // remove event listener during spy master round
 
-function SMeventOff() {
+function eventOffSM() {
   for (var i =0; i < 25; i++) {
     $("#box"+i).off()
+    console.log(SMeventOff)
   };
 };
 
