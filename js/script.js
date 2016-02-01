@@ -24,6 +24,8 @@ var redSleeperAgents = 0,
                 '#fff2e5', '#fff2e5', 'black'],
     clueValue;
 
+
+
 // jQuery Variable
 
 
@@ -191,22 +193,34 @@ function searchBlack(state, board) {
 // need work (need to connect with click)
 
 function eightBall() {
-  if (currentPlayer === "blueFA" && board[i].color === "black" && board[i].state === true) {
-    winner = "red team";
-    alert("red team wins")
-  } else if (currentPlayer === "redFA" && board[i].color === "black" && board[i].state === true) {
-    winner = "blue team";
-    alert("blue team wins")
+
+  for (var i = 0; i < 25; i++) {
+    if (currentPlayer === "blueFA" && board[i].color === "black" && board[i].state === true) {
+      winner = "red team";
+      alert("red team wins")
+    } else if (currentPlayer === "redFA" && board[i].color === "black" && board[i].state === true) {
+      winner = "blue team";
+      alert("blue team wins")
+    };
   };
 };
 
 
-//ending a round
+//ending a round (activated around each round)
 function endRound() {}; //base on each click event by field agent
 //1. death by 8ball
 eightBall()
-//2. selecting wrong sleeper agent
-// if clicked box != same color or white
+//2. selecting wrong sleeper agent // if clicked box != same color or white
+// prob need to add (THIS) === clicked_word in condition
+function wrongAgent() {
+for (var i = 0; i < 25; i++) {
+  if (currentPlayer === "blueFA" && board[i].color !== "blue" && board[i].state === true) {
+      console.log("blue team round ends", board[i])
+    } else if (currentPlayer === "redFA" && board[i].color !== "red" && board[i].state === true) {
+      console.log("red team round ends", board[i])
+    };
+  };
+};
 
 //3. ending by running out of moves
 
@@ -295,6 +309,7 @@ function activate() {
     };
     console.log(board[i].word, board[i].state, board[i].color);
   };
+  console.log("activated")
 };
 
 // SPYMASTER CONTROL
