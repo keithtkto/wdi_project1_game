@@ -32,7 +32,7 @@ h3 {
   margin-left: 96px;
   float: left;
   display: block;
-  bottom: 88px;
+  bottom: 86px;
   position: absolute;
 }
 
@@ -40,8 +40,7 @@ h4 {
   font-weight: bolder;
   text-decoration: underline;
   margin-bottom: -10px;
-  float: left;
-
+  float: center;
 }
 
 h5 {

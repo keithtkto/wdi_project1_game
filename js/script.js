@@ -17,11 +17,11 @@ var redSleeperAgents = 0,
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
-                '#fff2e5', '#fff2e5', 'black'],
+                '#fff2e5', 'black'],
     redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
-                '#fff2e5', '#fff2e5', 'black'],
+                '#fff2e5', 'black'],
 
     clueValue,
     indexBlack,
@@ -276,8 +276,20 @@ function renderSM() {
   };
 };
 
+// render for amount of sleeper agent
 
-
+function remainingSA() {
+  blueSleeperAgents = 0;
+  redSleeperAgents = 0;
+  for (var i =0; i < 25; i++) {
+    if (board[i].color === "blue" && board[i].state === false) {
+      blueSleeperAgents++
+    };
+    if (board[i].color === "red" && board[i].state === false) {
+      redSleeperAgents++
+    }
+  }
+};
 
 
 /* Player Interaction */
