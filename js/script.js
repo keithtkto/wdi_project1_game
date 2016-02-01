@@ -35,11 +35,55 @@ var redSleeperAgents = 0,
 
 
 /* game operation */
-function startGame() {}
+function startGame() {
 
 //adding properties to board[]
-setBoard()
-setColor()
+setBoard();
+setColor();
+// adding words in each box
+wordInBox();
+// blue spymaster start
+
+
+
+}; // end of startGame()
+
+
+// 1. MOVES
+
+
+function firstMove() {}
+
+function blueSMmove() {
+  renderRemainingSA()
+  disableSubmit();
+  renderSM();
+  blueSubmit();
+
+};
+
+function blueFAmove() {
+  renderFA();
+  clickOnFA();
+  clickOffFA();
+};
+//         break;
+//       case "redSM":
+//         currentPlayer = "redFA";
+//         renderRemainingSA()
+//         disableSubmit();
+//         renderSM();
+//         redSubmit()
+//         break;
+//       case "redFA":
+//         currentPlayer = "blueSM";
+//         renderSM()
+//         break;
+//       default:
+//         console.log("error on current player");
+// };
+
+
 
 
 
@@ -110,56 +154,7 @@ function wordInBox() {
 };
 
 
-wordInBox()
-
-
 /* Behavior */
-// 1. MOVES
-//    a. Spymaster move
-
-// need work
-/*
-function moves() {};
-switch(currentPlayer) {
-  case "blueSM":
-      return = #blueteam word/num input#;
-      break;
-    case "blueFA":
-      return = #blueteam click input#;
-      break;
-    case "redSM":
-      return = #redteam word/num input#;
-      break;
-    case "redFA":
-      return = #blueteam click input#;
-      break;
-    default:
-      console.log("error on player move");
-};
-*/
-
-//    b. field agent move
-
-// 2. selecting next player  (day1)blueSM --> blueFA --> redSM -->redFA -->(day2) blueSM
-
-//okay
-function nextPlayer() {}
-  switch(currentPlayer) {
-      case "blueSM":
-        currentPlayer = "blueFA";
-        break;
-      case "blueFA":
-        currentPlayer = "redSM";
-        break;
-      case "redSM":
-        currentPlayer = "redFA";
-        break;
-      case "redFA":
-        currentPlayer = "blueSM";
-        break;
-      default:
-        console.log("error on current player");
-  };
 
 
 
@@ -284,7 +279,7 @@ function renderSM() {
 
 // render for amount of sleeper agent
 
-function remainingSA() {
+function renderRemainingSA() {
   blueSleeperAgents = 0;
   redSleeperAgents = 0;
   for (var i =0; i < 25; i++) {
@@ -306,8 +301,10 @@ function remainingSA() {
 
 function clickOnFA() {
   for (i= 0; i < 25; i++) {
-    $("#box"+i).on("click", activate );
-    $('.word_box').eq(i).on("click", activate );
+    if (board[i].state === false) {
+      $("#box"+i).on("click", activate );
+      $('.word_box').eq(i).on("click", activate );
+    };
   };
 };
 
@@ -339,6 +336,8 @@ function activate() {
     console.log(board[i].word, board[i].state, board[i].color);
   };
   console.log("activated")
+  renderFA()
+  renderRemainingSA()
 };
 
 // SPYMASTER CONTROL
@@ -355,23 +354,41 @@ function eventOffSM() {
 // submit no refresh
 
 function blueSubmit() {
+  currentPlayer = "blueSM"
+  $("#send-buttonB").attr("disabled", false);
+  $("select").eq(0).attr("disabled", false);
+  $("#textareaB").attr("disabled", false);
+  $("#textareaB").attr("placeholder", "Uplink enabled...Enter your single word clue here")
+  $("#send-buttonB").attr('value', 'TRANSMIT');
   $( "#send-buttonB" ).click( function( evt ) {
     evt.preventDefault();
     clueValue = $('select')[0].value
     var newClue = $('#textareaB').val() + ' ' + clueValue;
     $li = $("<li id='clueB'>").text(newClue);
     $( "#clueBlue" ).append( $li );
+
+    currentPlayer = "blueFA"
+    blueFAmove()
+
     });
 };
 
 
 function redSubmit() {
+  currentPlayer = "redSM"
+  $("#send-buttonR").attr("disabled", false);
+  $("select").eq(1).attr("disabled", false);
+  $("#textareaR").attr("disabled", false);
+  $("#textareaR").attr("placeholder", "Uplink enabled...Enter your single word clue here")
+  $("#send-buttonR").attr('value', 'TRANSMIT');
   $( "#send-buttonR" ).click(function( evt ) {
     evt.preventDefault();
     clueValue = $('select')[1].value
     var newClue = $('#textareaR').val() + ' ' + clueValue;
     $li = $("<li id='clueR'>").text(newClue);
     $( "#clueRed" ).append( $li );
+
+    currentPlayer = "redFA"
   });
 };
 
@@ -382,7 +399,7 @@ function disableSubmit() {
   $("input").attr("disabled", true);
   $("select").attr("disabled", true);
   $("textarea").attr("disabled", true);
-  $("textarea").attr("placeholder", "Uplinked disabled......")
+  $("textarea").attr("placeholder", "Uplink disabled......")
   $("input").attr('value', 'DISABLED')
 }
 
