@@ -22,15 +22,12 @@ var redSleeperAgents = 0,
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
                 '#fff2e5', '#fff2e5', 'black'],
-    clueValue;
 
-
+    clueValue,
+    indexBlack,
+    indexClicked;
 
 // jQuery Variable
-
-
-
-
 /* Model */
 
 /* create game board */
@@ -180,11 +177,12 @@ function win() {}
 // VM1218:2 11
 
 //okay
-function searchBlack(state, board) {
+function indexBlack() {
     for (var i=0; i < 25; i++) {
         if ( board[i].color === "black") {
             console.log(i)
-            return i;
+            indexBlack = i;
+            // return blackLocation;
         };
     };
 };
@@ -192,41 +190,49 @@ function searchBlack(state, board) {
 
 // need work (need to connect with click)
 
-function eightBall() {
-
-  for (var i = 0; i < 25; i++) {
-    if (currentPlayer === "blueFA" && board[i].color === "black" && board[i].state === true) {
-      winner = "red team";
-      alert("red team wins")
-    } else if (currentPlayer === "redFA" && board[i].color === "black" && board[i].state === true) {
-      winner = "blue team";
-      alert("blue team wins")
-    };
-  };
-};
 
 
 //ending a round (activated around each round)
 function endRound() {}; //base on each click event by field agent
 //1. death by 8ball
+  ////need animation for this
 eightBall()
+
+function eightBall() {
+    if (currentPlayer === "blueFA" && board[blackLocation].state === true) {
+      winner = "red team";
+      alert("red team wins")
+    } else if (currentPlayer === "redFA" && board[blackLocation].state === true) {
+      winner = "blue team";
+      alert("blue team wins")
+  };
+};
+
 //2. selecting wrong sleeper agent // if clicked box != same color or white
 // prob need to add (THIS) === clicked_word in condition
+  //need animation for this
 function wrongAgent() {
-for (var i = 0; i < 25; i++) {
-  if (currentPlayer === "blueFA" && board[i].color !== "blue" && board[i].state === true) {
-      console.log("blue team round ends", board[i])
-    } else if (currentPlayer === "redFA" && board[i].color !== "red" && board[i].state === true) {
-      console.log("red team round ends", board[i])
-    };
+
+  if (currentPlayer === "blueFA" && board[indexClicked].color !== "blue" && board[indexClicked].state === true) {
+      console.log("blue team round ends", board[indexClicked])
+  } else if (currentPlayer === "redFA" && board[indexClicked].color !== "red" && board[indexClicked].state === true) {
+      console.log("red team round ends", board[indexClicked])
   };
 };
 
 //3. ending by running out of moves
+    //need animation for this
+function correctAgent() {
+  clueValue--
 
-clueValue
-
-
+  if (currentPlayer === "blueFA" && board[indexClicked].color === "blue") {
+    console.log(clueValue)
+    console.log("blue got the correct agent activated")
+  } else if (currentPlayer === "redFA" && board[indexClicked].color === "red") {
+    console.log(clueValue)
+    console.log("red got the correct agent activated")
+  };
+};
 
 
 
@@ -302,6 +308,7 @@ function activate() {
   console.log( $( this ).text() );
   for (var i = 0; i <25 ; i++) {
     if ( board[i].word === $(this).text() ) {
+        indexClicked = i;
         board[i].state = true;
     };
     if ($(this).text() === $(".words").eq(i).text() && board[i].word === $(this).text() ) {
