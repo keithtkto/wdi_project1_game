@@ -18,7 +18,7 @@ var redSleeperAgents = 0,
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
                 '#fff2e5', 'black'],
-    redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+    redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
                 '#fff2e5', 'black'],
@@ -31,6 +31,15 @@ var redSleeperAgents = 0,
 /* Model */
 
 /* create game board */
+// 1. click to start
+
+
+/* game operation */
+function startGame() {}
+
+//adding properties to board[]
+setBoard()
+setColor()
 
 
 
@@ -63,16 +72,12 @@ function setBoard() {
     board[i].state = false;
   };
 };
-setBoard()
-
-
-
 
 // generate random state
-// add board state (true = clicked/false = not clicked)
+// board state (true = clicked/false = not clicked)
 
 //okay
-function setColor() {}
+function setColor() {
   if (latestStartingTeam === "red") {
     for ( var i = 0; i < 25; i++ ) {
       var numColor = Math.floor( Math.random() * blueFirst.length );
@@ -81,9 +86,9 @@ function setColor() {}
       blueFirst.splice( (numColor), 1 );
       blueSleeperAgents = 9;
       redSleeperAgents = 8;
-      }
+    }
     latestStartingTeam = "blue";
-    } else {
+  } else {
     for ( var i = 0; i < 25; i++ ) {
       var numColor = Math.floor( Math.random() * redFirst.length );
       // console.log(numColor);
@@ -91,9 +96,10 @@ function setColor() {}
       redFirst.splice( (numColor), 1 );
       redSleeperAgents = 9;
       blueSleeperAgents = 8;
+      latestStartingTeam = "red"
     };
-  latestStartingTeam = "red";
   };
+}
 
 
   // Putting word into correlating boxes
@@ -289,8 +295,10 @@ function remainingSA() {
       redSleeperAgents++
     }
   }
-};
 
+  $('#blueSleeper').text(blueSleeperAgents)
+  $('#redSleeper').text(redSleeperAgents)
+}
 
 /* Player Interaction */
 
