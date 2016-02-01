@@ -21,9 +21,12 @@ var redSleeperAgents = 0,
     redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
-                '#fff2e5', '#fff2e5', 'black'];
+                '#fff2e5', '#fff2e5', 'black'],
+    clueValue;
 
 // jQuery Variable
+
+
 
 
 /* Model */
@@ -187,18 +190,29 @@ function searchBlack(state, board) {
 
 // need work (need to connect with click)
 
-function eightBall() {}
-if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state === true) {
-  winner = "red team";
-} else if (currentPlayer === "redFA" && board[11].color === "black" && board[11].state === true) {
-  winner = "blue team";
-}
+function eightBall() {
+  if (currentPlayer === "blueFA" && board[i].color === "black" && board[i].state === true) {
+    winner = "red team";
+    alert("red team wins")
+  } else if (currentPlayer === "redFA" && board[i].color === "black" && board[i].state === true) {
+    winner = "blue team";
+    alert("blue team wins")
+  };
+};
 
 
 //ending a round
+function endRound() {}; //base on each click event by field agent
 //1. death by 8ball
+eightBall()
 //2. selecting wrong sleeper agent
+// if clicked box != same color or white
+
 //3. ending by running out of moves
+
+clueValue
+
+
 
 
 
@@ -274,8 +288,10 @@ function activate() {
   console.log( $( this ).text() );
   for (var i = 0; i <25 ; i++) {
     if ( board[i].word === $(this).text() ) {
-          board[i].state = true;
-
+        board[i].state = true;
+    };
+    if ($(this).text() === $(".words").eq(i).text() && board[i].word === $(this).text() ) {
+        board[i].state = true;
     };
     console.log(board[i].word, board[i].state, board[i].color);
   };
@@ -297,7 +313,8 @@ function eventOffSM() {
 function blueSubmit() {
   $( "#send-buttonB" ).click( function( evt ) {
     evt.preventDefault();
-    var newClue = $('#textareaB').val() + ' ' + $('select')[0].value;
+    clueValue = $('select')[0].value
+    var newClue = $('#textareaB').val() + ' ' + clueValue;
     $li = $("<li id='clueB'>").text(newClue);
     $( "#clueBlue" ).append( $li );
     });
@@ -307,7 +324,8 @@ function blueSubmit() {
 function redSubmit() {
   $( "#send-buttonR" ).click(function( evt ) {
     evt.preventDefault();
-    var newClue = $('#textareaR').val() + ' ' + $('select')[1].value;
+    clueValue = $('select')[1].value
+    var newClue = $('#textareaR').val() + ' ' + clueValue;
     $li = $("<li id='clueR'>").text(newClue);
     $( "#clueRed" ).append( $li );
   });
