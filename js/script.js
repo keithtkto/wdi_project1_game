@@ -16,12 +16,12 @@ var redSleeperAgents = 0,
               {},{},{},{},{},{},{},{}],
     blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-                'white', 'white', 'white', 'white', 'white', 'white',
-                'white', 'white', 'black'],
+                '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
+                '#fff2e5', '#fff2e5', 'black'],
     redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-                'white', 'white', 'white', 'white', 'white', 'white',
-                'white', 'white', 'black'];
+                '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
+                '#fff2e5', '#fff2e5', 'black'];
 
 // jQuery Variable
 
@@ -204,10 +204,21 @@ if (currentPlayer === "blueFA" && board[11].color === "black" && board[11].state
 
 // render for field agent
 
-function render() {
+function renderFA() {
   for (var i =0; i < 25; i++) {
+    $('.word_box').eq(i).css('background', '#fff2e5')
     if (board[i].state === true) {
       $('.word_box').eq(i).css('background', board[i].color);
+      $("#box"+i).text("").css('background', board[i].color);
+    }
+  };
+};
+
+
+function renderSM() {
+  for (var i =0; i < 25; i++) {
+    $('.word_box').eq(i).css('background', board[i].color)
+    if (board[i].state === true) {
       $("#box"+i).text("").css('background', board[i].color);
     }
   };

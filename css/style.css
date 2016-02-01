@@ -30,6 +30,7 @@ main {
 h4 {
   font-weight: bolder;
   text-decoration: underline;
+  margin-bottom: -10px;
 
 }
 
@@ -37,7 +38,7 @@ h5 {
   margin-left: 18px;
   margin-right: 13px;
   position: absolute;
-  bottom: 50px;
+  bottom: 70px;
 }
 
 form {
@@ -59,7 +60,7 @@ li {
 }
 
 footer {
-  border: 1px solid brown;
+  /*border: 1px solid brown;*/
   text-align: center;
   color: blue;
   font-size: -1px ;
@@ -89,7 +90,7 @@ a {
 
 .powermac {
   text-align: center;
-  border: 1px solid blue;
+  border: 1px solid black;
   width: 15%;
   float: left;
   min-width: 140px;
@@ -111,12 +112,6 @@ a {
 }
 
 
-.powermac {
-  border: 1px solid green;
-
-}
-
-
 .word_box {
   background: #fff2e5;
   border: 1px solid black;
@@ -134,15 +129,17 @@ a {
   text-align: center;
   margin-top: 26px;
   background: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .infoBox {
-
+  display: block;
 
 }
 
 .nav {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   height: 60px;
 
 }
