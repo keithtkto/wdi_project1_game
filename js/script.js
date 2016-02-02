@@ -436,6 +436,21 @@ function pass() {
 }
 
 
+//bottons functions
+
+$('#bluestart').on('click',function(){
+  $("#ss").attr('class', "hidden")
+  startGame();
+  blueSMmove();
+});
+
+$('#redstart').on('click',function(){
+  $("#ss").attr('class', "hidden")
+  startGame();
+  redSMmove();
+
+});
+
 
 // restart game
 $("#restartGame").on('click', startGame)
