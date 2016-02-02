@@ -11,18 +11,19 @@ var redSleeperAgents = 0,
     round = 0,
     winner = '', //'blue' 'red' is a user input, default blue
     currentPlayer = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
-    latestStartingTeam = "red", //vs "red"
+    currentTeam = "blue", //vs "red"
     board = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
               {},{},{},{},{},{},{},{}],
-    blueFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+    blueStock = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
                 '#fff2e5', 'black'],
-    redFirst = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+    redStock = ['blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5', '#fff2e5',
                 '#fff2e5', 'black'],
-
+    blueFirst = [],
+    redFirst = [],
     clueValue,
     indexBlack,
     indexClicked;
@@ -40,6 +41,7 @@ function startGame() {
 //adding properties to board[]
 setBoard();
 setColor();
+renderFA();
 whereBlackAt();
 // adding words in each box
 wordInBox();
@@ -60,11 +62,13 @@ function blueSMmove() {
   renderRemainingSA()
   disableSubmit();
   renderSM();
+  eventOffSM()
   blueSubmit();
 
 };
 
 function blueFAmove() {
+  disableSubmit()
   renderFA();
   clickOnFA();
   clickOffFA();
@@ -74,15 +78,16 @@ function redSMmove() {
   renderRemainingSA()
   disableSubmit();
   renderSM();
+  eventOffSM()
   redSubmit();
 };
 
 function redFAmove() {
+  disableSubmit()
   renderFA();
   clickOnFA();
   clickOffFA();
 };
-
 
 
 
@@ -120,28 +125,31 @@ function setBoard() {
 // generate random state
 // board state (true = clicked/false = not clicked)
 
+
 //okay
 function setColor() {
-  if (latestStartingTeam === "red") {
+  blueFirst += blueStock;
+  blueFirst = blueFirst.split(",")
+  redFirst += redStock;
+  redFirst = redFirst.split(",")
+  if (currentTeam === "blue") {
     for ( var i = 0; i < 25; i++ ) {
       var numColor = Math.floor( Math.random() * blueFirst.length );
       // console.log(numColor);
       board[i].color = blueFirst[numColor];
       blueFirst.splice( (numColor), 1 );
-      blueSleeperAgents = 9;
-      redSleeperAgents = 8;
     }
-    latestStartingTeam = "blue";
-  } else {
+  // blueFirst = blueStock;
+    // latestStartingTeam = "blue";
+  } else if (currentTeam === "red") {
     for ( var i = 0; i < 25; i++ ) {
       var numColor = Math.floor( Math.random() * redFirst.length );
       // console.log(numColor);
       board[i].color = redFirst[numColor];
       redFirst.splice( (numColor), 1 );
-      redSleeperAgents = 9;
-      blueSleeperAgents = 8;
-      latestStartingTeam = "red"
+      // latestStartingTeam = "red"
     };
+  // redFirst = redStock;
   };
 }
 
@@ -264,7 +272,8 @@ function correctAgent() {
 
 function renderFA() {
   for (var i =0; i < 25; i++) {
-    $('.word_box').eq(i).css('background', '#fff2e5')
+    $('.word_box').eq(i).css('background', '#fff2e5');
+    $("#box"+i).css('background', '#fff2e5');
     if (board[i].state === true) {
       $('.word_box').eq(i).css('background', board[i].color);
       $("#box"+i).text("UNAVAIBLE").css('background', board[i].color);
@@ -355,7 +364,7 @@ function activate() {
 function eventOffSM() {
   for (var i =0; i < 25; i++) {
     $("#box"+i).off()
-    console.log(SMeventOff)
+    $('.word_box').eq(i).off()
   };
 };
 
@@ -428,7 +437,26 @@ function pass() {
 
 
 
-// preventing opposite team to submit
+// restart game
+$("#restartGame").on('click', startGame)
+
+
+//refresh color only (provide warning for players)
+
+$("#refreshColor").on('click', function(){
+  console.log("refresh color");
+  setColor();
+  renderSM();
+});
+
+//refresh words only (provide warning for players)
+
+$("#refreshWords").on('click', function() {
+  event.preventDefault();
+  setBoard();
+  wordInBox();
+});
+
 
 
 
