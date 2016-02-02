@@ -151,15 +151,14 @@ function wordInBox() {
 // win condition
 
 //okay
-function win() {
-  if (blueSleeperAgents === 0) {
-    winner = 'blue team';
-
-  } else if (redSleeperAgents === 0) {
-    winner = 'red team';
-  };
-  console.log(winner)
-  startGame()
+function win(teamColor) {
+  if (teamColor === "blue") {
+    console.log("BLUE WINS!");
+  } else {
+    console.log("RED WINS!");
+  }
+  // console.log(winner)
+  // startGame()
 }
 
 //ending a round (activated around each round)
@@ -172,11 +171,13 @@ function endRound() {
 
 function eightBall() {
   if (currentPlayer === "blueFA" && board[indexBlack].clicked === true) {
-    winner = "red team";
-    console.log("red team wins")
+    // winner = "red team";
+    win("red");
+    console.log("blue team activated assassin")
   } else if (currentPlayer === "redFA" && board[indexBlack].clicked === true) {
-    winner = "blue team";
-    console.log("blue team wins")
+    // winner = "blue team";
+    console.log("red team activated assassin")
+    win("blue");
   }
 }
 
@@ -198,13 +199,15 @@ function wrongAgent() {
 function correctAgent() {
   clueValue--
   if (clueValue === 0 && currentPlayer === "blueFA") {
-    console.log(clueValue);
+    // console.log(clueValue);
     console.log("blue got all the correct agent activated");
-    redSMmove();
+    win("blue");
+    // redSMmove();
   } else if (clueValue === 0 && currentPlayer === "blueFA") {
-    console.log(clueValue);
+    // console.log(clueValue);
     console.log("red got the correct agent activated");
-    blueSMmove();
+    win("red");
+    // blueSMmove();
   };
 };
 
