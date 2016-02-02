@@ -40,19 +40,21 @@ function startGame() {
 //adding properties to board[]
 setBoard();
 setColor();
+whereBlackAt();
 // adding words in each box
 wordInBox();
+disableSubmit()
+pass()
 // blue spymaster start
-
-
-
 }; // end of startGame()
 
 
 // 1. MOVES
 
 
-function firstMove() {}
+function firstMove() {
+
+}
 
 function blueSMmove() {
   renderRemainingSA()
@@ -67,21 +69,19 @@ function blueFAmove() {
   clickOnFA();
   clickOffFA();
 };
-//         break;
-//       case "redSM":
-//         currentPlayer = "redFA";
-//         renderRemainingSA()
-//         disableSubmit();
-//         renderSM();
-//         redSubmit()
-//         break;
-//       case "redFA":
-//         currentPlayer = "blueSM";
-//         renderSM()
-//         break;
-//       default:
-//         console.log("error on current player");
-// };
+
+function redSMmove() {
+  renderRemainingSA()
+  disableSubmit();
+  renderSM();
+  redSubmit();
+};
+
+function redFAmove() {
+  renderFA();
+  clickOnFA();
+  clickOffFA();
+};
 
 
 
@@ -163,13 +163,16 @@ function wordInBox() {
 // win condition
 
 //okay
-function win() {}
+function win() {
   if (blueSleeperAgents === 0) {
     winner = 'blue team';
+
   } else if (redSleeperAgents === 0) {
     winner = 'red team';
   };
-
+  console.log(winner)
+  startGame()
+}
 
 
 //Immediate loss (8-ball) condition and where is teh 8ball
@@ -178,7 +181,7 @@ function win() {}
 // VM1218:2 11
 
 //okay
-function indexBlack() {
+function whereBlackAt() {
     for (var i=0; i < 25; i++) {
         if ( board[i].color === "black") {
             console.log(i)
@@ -194,18 +197,22 @@ function indexBlack() {
 
 
 //ending a round (activated around each round)
-function endRound() {}; //base on each click event by field agent
-//1. death by 8ball
-  ////need animation for this
-eightBall()
+//nested within activate
+function endRound() {
+  eightBall();
+  wrongAgent();
+  correctAgent();
+}
 
 function eightBall() {
-    if (currentPlayer === "blueFA" && board[blackLocation].state === true) {
+    if (currentPlayer === "blueFA" && board[indexBlack].state === true) {
       winner = "red team";
-      alert("red team wins")
-    } else if (currentPlayer === "redFA" && board[blackLocation].state === true) {
+      console.log("red team wins")
+
+    } else if (currentPlayer === "redFA" && board[indexBlack].state === true) {
       winner = "blue team";
-      alert("blue team wins")
+      console.log("blue team wins")
+
   };
 };
 
@@ -213,28 +220,28 @@ function eightBall() {
 // prob need to add (THIS) === clicked_word in condition
   //need animation for this
 function wrongAgent() {
-
   if (currentPlayer === "blueFA" && board[indexClicked].color !== "blue" && board[indexClicked].state === true) {
       console.log("blue team round ends", board[indexClicked])
+      redSMmove();
   } else if (currentPlayer === "redFA" && board[indexClicked].color !== "red" && board[indexClicked].state === true) {
       console.log("red team round ends", board[indexClicked])
+      blueSMmove();
   };
 };
 
 //3. ending by running out of moves
     //need animation for this
 function correctAgent() {
-  clueValue--
-
-  if (currentPlayer === "blueFA" && board[indexClicked].color === "blue") {
-    blueSleeperAgents--
-    console.log(clueValue)
-    console.log("blue got the correct agent activated")
-  } else if (currentPlayer === "redFA" && board[indexClicked].color === "red") {
-    redSleeperAgents--
-    console.log(clueValue)
-    console.log("red got the correct agent activated")
-  };
+    clueValue--
+    if (clueValue === 0 && currentPlayer === "blueFA") {
+      console.log(clueValue);
+      console.log("blue got all the correct agent activated");
+      redSMmove();
+    } else if (clueValue === 0 && currentPlayer === "blueFA") {
+      console.log(clueValue);
+      console.log("red got the correct agent activated");
+      blueSMmove();
+    };
 };
 
 
@@ -260,7 +267,7 @@ function renderFA() {
     $('.word_box').eq(i).css('background', '#fff2e5')
     if (board[i].state === true) {
       $('.word_box').eq(i).css('background', board[i].color);
-      $("#box"+i).text("").css('background', board[i].color);
+      $("#box"+i).text("UNAVAIBLE").css('background', board[i].color);
     }
   };
 };
@@ -272,7 +279,7 @@ function renderSM() {
   for (var i =0; i < 25; i++) {
     $('.word_box').eq(i).css('background', board[i].color)
     if (board[i].state === true) {
-      $("#box"+i).text("").css('background', board[i].color);
+      $("#box"+i).text("UNAVAIBLE").css('background', board[i].color);
     }
   };
 };
@@ -338,6 +345,7 @@ function activate() {
   console.log("activated")
   renderFA()
   renderRemainingSA()
+  endRound()
 };
 
 // SPYMASTER CONTROL
@@ -389,6 +397,7 @@ function redSubmit() {
     $( "#clueRed" ).append( $li );
 
     currentPlayer = "redFA"
+    redFAmove()
   });
 };
 
@@ -402,6 +411,21 @@ function disableSubmit() {
   $("textarea").attr("placeholder", "Uplink disabled......")
   $("input").attr('value', 'DISABLED')
 }
+
+function pass() {
+  $("#passFA").on("click", function(evt) {
+    evt.preventDefault();
+    if (currentPlayer === "blueFA") {
+      redSMmove()
+    } else if (currentPlayer === "redFA") {
+      blueSMmove()
+    } else {
+      console.log("Spymaster can not pass their turn");
+    };
+
+  });
+}
+
 
 
 // preventing opposite team to submit
