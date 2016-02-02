@@ -89,6 +89,22 @@ a {
   font-size: 12px;
 }
 
+.startScreen {
+  background: white;
+  position: fixed;
+  z-index: +1;
+  width: 100%;
+  min-height: 430px;
+  border-top:1px solid black;
+}
+
+.startteam {
+  margin: 110px auto;
+}
+
+.hidden {
+  display: none;
+}
 
 
 .top {
