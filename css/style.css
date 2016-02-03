@@ -257,6 +257,16 @@ button.startteam {
 
 }
 
+div.timer {
+  margin-top: 3px;
+  float: right;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500px;
+  display: inline;
+  margin-left: -200px;
+}
+
 /*
 #select-blue, #send-button-blue {
   box-shadow: 0 0 0 0 #0198E1 inset, 0.2em 0.1em 0 0 #0EBFE9;

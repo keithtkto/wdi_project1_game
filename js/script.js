@@ -65,6 +65,7 @@ function blueSMmove() {
   disableSubmit();
   renderSM();
   eventOffSM()
+  startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
@@ -81,6 +82,7 @@ function redSMmove() {
   disableSubmit();
   renderSM();
   eventOffSM();
+  startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
@@ -402,6 +404,35 @@ function pass() {
 }
 
 
+//Timer
+var threeMinutes = 60 * 3,
+    display = $('#time');
+
+var startTimer = function(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--timer < 0) {
+            display.text("HURRY!!");;
+        }
+    }, 1000);
+}
+
+
+
+
+
+
+
+
+
 //bottons functions
 
 $('#bluestart').on('click',function(){
@@ -487,6 +518,8 @@ function transitionSMsubmit() {
   $(".activateScreen > p").fadeOut( 2000 );
   $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT</button>").appendTo($(".activateScreen"))
   $("#accept").on("click", function() {
+    clearInterval(startTimer);
+    startTimer(threeMinutes, display);
     // $(".activateScreen").fadeOut( 1000 );
     $(".activateScreen").remove();
     });
