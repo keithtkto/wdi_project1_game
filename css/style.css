@@ -47,20 +47,21 @@ h2 {
 }
 
 h3 {
-  margin-left: 96px;
+  margin-left: 100px;
   float: left;
   display: block;
-  bottom: 86px;
+  bottom: 75px;
   position: absolute;
+  font-size: 30px;
 }
 
 
 h5 {
-  margin-left: 14px;
+  margin-left: 24px;
   /*margin-right: 13px;*/
   float: left;
   position: absolute;
-  bottom: 70px;
+  bottom: 73px;
 }
 
 form {
@@ -68,10 +69,6 @@ form {
   bottom: 10px;
 }
 
-textarea {
-  min-width: 70px;
-  max-width: 120px;
-}
 
 li {
   text-align: left;
@@ -98,6 +95,11 @@ p {
 a {
   font-size: 12px;
 }
+/* things inside powermac*/
+form {
+  position: absolute;
+  display: block;
+}
 
 select {
   position: relative;
@@ -112,11 +114,23 @@ input {
   width: 75px;
 }
 
-textarea {
-  float: center;
-  width: 100px;
 
+textarea {
+  min-width: 70px;
+  max-width: 120px;
+  width: 100px;
+  margin-bottom: 35px;
+  margin-left: 13px;
 }
+
+.empty {
+  width: 20px;
+}
+
+
+
+
+
 
 .startScreen {
   background: white; /* For browsers that do notred support gradients */
@@ -184,7 +198,7 @@ button.startteam {
   position: relative;
   /* line-height: 1em; */
   text-decoration: none;
-  display: inline-block;
+  display: block;
   transition: 0.25s box-shadow, 0.25s -webkit-transform;
 }
 
@@ -192,7 +206,7 @@ button.startteam {
   position: absolute;
   display: inline-flex;
   min-width: 120px;
-  bottom: 10%;
+  bottom: 0;
   left: 10%;
 
 }
@@ -239,6 +253,7 @@ button.startteam {
 .nav {
   border-bottom: 1px solid #444;
   height: 60px;
+  margin-top: 6px;
 
 }
 
