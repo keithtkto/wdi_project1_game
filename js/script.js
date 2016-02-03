@@ -334,6 +334,8 @@ function playerSubmit(color) {
   $("#textarea-" + color).attr("disabled", false);
   $("#textarea-" + color).attr("placeholder", "Uplink enabled...Enter your single word clue here")
   $("#send-button-" + color).attr('value', 'TRANSMIT');
+  $("#send-button-" + color).removeClass("disabled");
+  $("#select-" + color).removeClass("disabled")
   $( "#send-button-" + color ).click(function(evt) {
     evt.preventDefault();
 
@@ -347,50 +349,16 @@ function playerSubmit(color) {
     $( "#clue-" + color).append( $li );
 
     currentPlayer = color + "FA";
-    color === "blue" ? blueFAmove() : redFAmove();
-  });
-};
 
-// function blueSubmit() {
-//   currentPlayer = "blueSM"
-//   $("#send-buttonB").attr("disabled", false);
-//   $("select").eq(0).attr("disabled", false);
-//   $("#textareaB").attr("disabled", false);
-//   $("#textareaB").attr("placeholder", "Uplink enabled...Enter your single word clue here")
-//   $("#send-buttonB").attr('value', 'TRANSMIT');
-//   $( "#send-buttonB" ).click(function(evt) {
-//     evt.preventDefault();
-
-//     clueValue = $('select')[0].value
-//     var newClue = $('#textareaB').val() + ' ' + clueValue;
-//     $li = $("<li id='clueB'>").text(newClue);
-//     $( "#clueBlue" ).append( $li );
-
-//     currentPlayer = "blueFA";
-//     blueFAmove();
-//   });
-// };
-
-
-// function redSubmit() {
-//   currentPlayer = "redSM"
-//   $("#send-buttonR").attr("disabled", false);
-//   $("select").eq(1).attr("disabled", false);
-//   $("#textareaR").attr("disabled", false);
-//   $("#textareaR").attr("placeholder", "Uplink enabled...Enter your single word clue here")
-//   $("#send-buttonR").attr('value', 'TRANSMIT');
-//   $( "#send-buttonR" ).click(function(evt) {
-//     evt.preventDefault();
-//     clueValue = $('select')[1].value
-//     var newClue = $('#textareaR').val() + ' ' + clueValue;
-//     $li = $("<li id='clueR'>").text(newClue);
-//     $( "#clueRed" ).append( $li );
-
-//     currentPlayer = "redFA";
-//     redFAmove();
-//   });
-// };
-
+    if (color === "blue") {
+      currentTeam = "red";
+      blueFAmove();
+    } else if (color === "red") {
+      currentTeam = "blue";
+      redFAmove();
+    }
+  })
+}
 
 // remove submit during spy master round
 
@@ -399,7 +367,9 @@ function disableSubmit() {
   $("select").attr("disabled", true);
   $("textarea").attr("disabled", true);
   $("textarea").attr("placeholder", "Uplink disabled......")
-  $("input").attr('value', 'DISABLED')
+  $("input").attr('value', 'DISABLED');
+  $(".submit").addClass("disabled");
+  $("select").addClass("disabled");
 }
 
 function pass() {
@@ -411,7 +381,7 @@ function pass() {
       blueSMmove()
     } else {
       console.log("Spymaster can not pass their turn");
-    };
+    }
 
   });
 }
