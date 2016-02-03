@@ -166,10 +166,10 @@ function win(teamColor) {
 //ending a round (activated around each round)
 //nested within activate
 function endRound() {
+  transitionActivate();
   eightBall();
   wrongAgent();
   correctAgent();
-  transitionActivate()
 }
 
 function eightBall() {
@@ -447,29 +447,37 @@ var $center = $(".center");
 // $("<div><h1>BLUE WINS</h1><button>Play Again!</button></div>").css({position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "indianred", color: "white"})
 // [
 // function for clicking action on word card
+
 function transitionActivate() {
+  console.log("transition actived")
   switch (board[indexClicked].color) {
     case "blue":
-      $("<div class='activateScreen'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center)
+      $("<div class='activateScreen'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center);
+      console.log("blue activated");
       break;
     case "red":
-        $("<div class='activateScreen'><p>RED AGENT CONTACTED</p></div>").appendTo($center)
+      $("<div class='activateScreen'><p>RED AGENT CONTACTED</p></div>").appendTo($center);
+      console.log("red activated")
       break;
     case "#fff2e5":
-        $("<div class='activateScreen'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center)
+      $("<div class='activateScreen'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center);
+      console.log("BYSTANDER activated")
       break;
     case "black":
-        $("<div class='activateScreen'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center)
-  }
+        $("<div class='activateScreen'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center);
+        console.log("black activated")
+      }
   $(".activateScreen").fadeOut( 2000 )
 }
 
 function transitionSMsubmit() {
+  $(".activateScreen").remove();
   $("<div class='activateScreen'><p>CLUE SUBMITTED...<br>INITIATIZING...<br>ENCYPTING...<br>SENT...</p></div>").appendTo($center);
   $(".activateScreen > p").fadeOut( 2000 );
-  $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT MISSION</button>").appendTo($(".activateScreen"))
+  $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT</button>").appendTo($(".activateScreen"))
   $("#accept").on("click", function() {
-    $(".activateScreen").fadeOut( 1000 );
+    // $(".activateScreen").fadeOut( 1000 );
+    $(".activateScreen").remove();
     });
 
 }
