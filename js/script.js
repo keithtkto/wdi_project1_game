@@ -68,6 +68,7 @@ function blueSMmove() {
 };
 
 function blueFAmove() {
+  transitionSMsubmit()
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -83,6 +84,7 @@ function redSMmove() {
 };
 
 function redFAmove() {
+  transitionSMsubmit()
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -167,6 +169,7 @@ function endRound() {
   eightBall();
   wrongAgent();
   correctAgent();
+  transitionActivate()
 }
 
 function eightBall() {
@@ -332,9 +335,10 @@ function playerSubmit(color) {
   $("#send-button-" + color).attr("disabled", false);
   $("#select-" + color).attr("disabled", false);
   $("#textarea-" + color).attr("disabled", false);
-  $("#textarea-" + color).attr("placeholder", "Uplink enabled...Enter your single word clue here")
+  $("#textarea-" + color).attr("placeholder", "UPLINK ENABLE")
   $("#send-button-" + color).attr('value', 'TRANSMIT');
   $("#send-button-" + color).removeClass("disabled");
+  $("#textarea-" + color).removeClass("disabled");
   $("#select-" + color).removeClass("disabled")
   $( "#send-button-" + color ).click(function(evt) {
     evt.preventDefault();
@@ -366,10 +370,12 @@ function disableSubmit() {
   $("input").attr("disabled", true);
   $("select").attr("disabled", true);
   $("textarea").attr("disabled", true);
-  $("textarea").attr("placeholder", "Uplink disabled......")
+  $("textarea").attr("placeholder", "UPLINK DISABLE")
   $("input").attr('value', 'DISABLED');
   $(".submit").addClass("disabled");
-  $("select").addClass("disabled");
+  $("select").addClass("disabled")
+  $("textarea").addClass("disabled");
+  $("textarea").val("")
 }
 
 function pass() {
@@ -404,7 +410,16 @@ $('#redstart').on('click',function(){
 });
 
 // restart game
-$("#restartGame").on('click', startGame)
+$("#restartGame").on('click', function(){
+  currentTeam === "blue" ? currentTeam = "red"  :
+                           currentTeam = "blue" ;
+  startGame();
+  if (currentTeam === "blue") {
+    blueSMmove();
+  } else if (currentTeam === "red") {
+    redSMmove();
+  }
+});
 
 //refresh color only (provide warning for players)
 $("#refreshColor").on('click', function(){
@@ -422,7 +437,48 @@ $("#refreshWords").on('click', function() {
 
 
 
+// Transitional Screen
+
+
+
+var $center = $(".center");
+
 
 // $("<div><h1>BLUE WINS</h1><button>Play Again!</button></div>").css({position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "indianred", color: "white"})
 // [
+// function for clicking action on word card
+function transitionActivate() {
+  switch (board[indexClicked].color) {
+    case "blue":
+      $("<div class='activateScreen'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center)
+      break;
+    case "red":
+        $("<div class='activateScreen'><p>RED AGENT CONTACTED</p></div>").appendTo($center)
+      break;
+    case "#fff2e5":
+        $("<div class='activateScreen'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center)
+      break;
+    case "black":
+        $("<div class='activateScreen'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center)
+  }
+  $(".activateScreen").fadeOut( 2000 )
+}
+
+function transitionSMsubmit() {
+  $("<div class='activateScreen'><p>CLUE SUBMITTED...<br>INITIATIZING...<br>ENCYPTING...<br>SENT...</p></div>").appendTo($center);
+  $(".activateScreen > p").fadeOut( 2000 );
+  $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT MISSION</button>").appendTo($(".activateScreen"))
+  $("#accept").on("click", function() {
+    $(".activateScreen").fadeOut( 1000 );
+    });
+
+}
+
+
+
+// $(".activateScreen").fadeIn( "slow" )
+// how the fuck do u fade in???
+
+
+
 
