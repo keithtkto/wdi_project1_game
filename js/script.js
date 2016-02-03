@@ -11,7 +11,8 @@ var redSleeperAgents  = 0,
     round             = 0,
     winner            = "", //'blue' 'red' is a user input, default blue
     currentPlayer     = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
-    currentTeam       = "", //vs "red"
+    currentTeam       = "", // blue" or "red"
+    startingTeam      = "", //"blue" or "red"
     board             = [
       {},{},{},{},{},
       {},{},{},{},{},
@@ -348,7 +349,7 @@ function playerSubmit(color) {
                        clueValue = $('select')[1].value ;
     // clueValue = $('#select-' + color).value
 
-    var newClue = $('#textarea' + color).val() + ' ' + (clueValue - 1) ;
+    var newClue = $('#textarea-' + color).val() + ' ' + (clueValue - 1) ;
     $li = $("<li id='clue-'" + color + ">").text(newClue);
     $( "#clue-" + color).append( $li );
 
@@ -397,13 +398,15 @@ function pass() {
 
 $('#bluestart').on('click',function(){
   $("#ss").attr('class', "hidden")
-  currentTeam = "blue";
+  startingTeam = "blue";
+  currentTeam ="blue"
   startGame();
   blueSMmove();
 });
 
 $('#redstart').on('click',function(){
   $("#ss").attr('class', "hidden")
+  startingTeam = "red";
   currentTeam = "red";
   startGame();
   redSMmove();
@@ -411,8 +414,8 @@ $('#redstart').on('click',function(){
 
 // restart game
 $("#restartGame").on('click', function(){
-  currentTeam === "blue" ? currentTeam = "red"  :
-                           currentTeam = "blue" ;
+  startingTeam === "blue" ? startingTeam = "red"  :
+                           startingTeam = "blue" ;
   startGame();
   if (currentTeam === "blue") {
     blueSMmove();
