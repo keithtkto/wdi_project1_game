@@ -348,13 +348,21 @@ function playerSubmit(color) {
     color === "blue" ? clueValue = $('select')[0].value :
                        clueValue = $('select')[1].value ;
     // clueValue = $('#select-' + color).value
-
-    var newClue = $('#textarea-' + color).val() + ' ' + (clueValue - 1) ;
-    $li = $("<li id='clue-'" + color + ">").text(newClue);
-    $( "#clue-" + color).append( $li );
+    if (clueValue == 11) {
+      console.log("selected X")
+      $li = $("<li id='clue-'" + color + ">").text("X");
+      $( "#clue-" + color).append( $li );
+    } else if (clueValue == 12) {
+      console.log("selected INF")
+      $li = $("<li id='clue-'" + color + ">").text("∞");
+      $( "#clue-" + color).append( $li );
+    } else {
+      var newClue = $('#textarea-' + color).val() + ' ' + (clueValue - 1) ;
+      $li = $("<li id='clue-'" + color + ">").text(newClue);
+      $( "#clue-" + color).append( $li );
+    }
 
     currentPlayer = color + "FA";
-
     if (color === "blue") {
       currentTeam = "red";
       blueFAmove();
