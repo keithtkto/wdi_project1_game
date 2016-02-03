@@ -8,7 +8,10 @@ console.log("CAPCOM, We're GO for Powered Descent.");
 // global var
 var redSleeperAgents  = 0,
     blueSleeperAgents = 0,
-    round             = 0,
+    mission           = 1,
+    day               = 0,
+    redScore          = 0,
+    blueScore         = 0,
     winner            = "", //'blue' 'red' is a user input, default blue
     currentPlayer     = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
     currentTeam       = "", // blue" or "red"
@@ -158,10 +161,16 @@ function wordInBox() {
 //okay
 function win(teamColor) {
   if (teamColor === "blue") {
+    blueScore += 1;
     console.log("BLUE WINS!");
   } else {
+    redScore += 1;
     console.log("RED WINS!");
   }
+  day = 0;
+  mission += 1;
+  $("#day").text("MISSION: " + mission + " DAY: " + day);
+  $("#score").text("BLUE " + blueScore + " RED " + redScore);
   // console.log(winner)
   // startGame()
 }
@@ -332,9 +341,14 @@ function eventOffSM() {
 
 
 function playerSubmit(color) {
-  // var colorInitial = color.charAt(0).toUpperCase();
-
-  currentPlayer = color + "SM"
+  //changing the day
+  day += 0.5;
+  $("#day").text("MISSION: " + mission + " DAY: " + day);
+  //change background color
+  color === "blue" ? $("body").css("background-color", "#e5e5ff") :
+                     $("body").css("background-color", "#ffe5e5") ;
+  //button status change
+  currentPlayer = color + "SM";
   $("#send-button-" + color).attr("disabled", false);
   $("#select-" + color).attr("disabled", false);
   $("#textarea-" + color).attr("disabled", false);
@@ -345,11 +359,8 @@ function playerSubmit(color) {
   $("#select-" + color).removeClass("disabled")
   $( "#send-button-" + color ).click(function(evt) {
     evt.preventDefault();
-
-
     color === "blue" ? clueValue = $('select')[0].value :
                        clueValue = $('select')[1].value ;
-    // clueValue = $('#select-' + color).value
     if (clueValue == 11) {
       console.log("selected X")
       $li = $("<li id='clue-'" + color + ">").text("X");
