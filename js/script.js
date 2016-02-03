@@ -64,7 +64,7 @@ function blueSMmove() {
   disableSubmit();
   renderSM();
   eventOffSM()
-  blueSubmit();
+  playerSubmit(currentTeam);
 };
 
 function blueFAmove() {
@@ -78,8 +78,8 @@ function redSMmove() {
   renderRemainingSA()
   disableSubmit();
   renderSM();
-  eventOffSM()
-  redSubmit();
+  eventOffSM();
+  playerSubmit(currentTeam);
 };
 
 function redFAmove() {
@@ -325,67 +325,71 @@ function eventOffSM() {
 // submit no refresh
 
 
-// function playerSubmit(color) {
-//   var colorInitial = color.charAt(0).toUpperCase();
+function playerSubmit(color) {
+  // var colorInitial = color.charAt(0).toUpperCase();
 
-//   currentPlayer = color + "SM"
-//   $("#send-button" + colorInitial).attr("disabled", false);
+  currentPlayer = color + "SM"
+  $("#send-button-" + color).attr("disabled", false);
+  $("#select-" + color).attr("disabled", false);
+  $("#textarea-" + color).attr("disabled", false);
+  $("#textarea-" + color).attr("placeholder", "Uplink enabled...Enter your single word clue here")
+  $("#send-button-" + color).attr('value', 'TRANSMIT');
+  $( "#send-button-" + color ).click(function(evt) {
+    evt.preventDefault();
+
+
+    color === "blue" ? clueValue = $('select')[0].value :
+                       clueValue = $('select')[1].value ;
+    // clueValue = $('#select-' + color).value
+
+    var newClue = $('#textarea' + color).val() + ' ' + (clueValue - 1) ;
+    $li = $("<li id='clue-'" + color + ">").text(newClue);
+    $( "#clue-" + color).append( $li );
+
+    currentPlayer = color + "FA";
+    color === "blue" ? blueFAmove() : redFAmove();
+  });
+};
+
+// function blueSubmit() {
+//   currentPlayer = "blueSM"
+//   $("#send-buttonB").attr("disabled", false);
 //   $("select").eq(0).attr("disabled", false);
-//   $("#textarea" + colorInitial).attr("disabled", false);
-//   $("#textarea" + colorInitial).attr("placeholder", "Uplink enabled...Enter your single word clue here")
-//   $("#send-button" + colorInitial).attr('value', 'TRANSMIT');
-//   $( "#send-button" + colorInitial ).click(function(evt) {
+//   $("#textareaB").attr("disabled", false);
+//   $("#textareaB").attr("placeholder", "Uplink enabled...Enter your single word clue here")
+//   $("#send-buttonB").attr('value', 'TRANSMIT');
+//   $( "#send-buttonB" ).click(function(evt) {
 //     evt.preventDefault();
 
 //     clueValue = $('select')[0].value
-//     var newClue = $('#textarea' + colorInitial).val() + ' ' + clueValue;
-//     $li = $("<li id='clue'" + colorInitial + ">").text(newClue);
-//     $( "#clue" + colorInitial + color.slice(1) ).append( $li );
+//     var newClue = $('#textareaB').val() + ' ' + clueValue;
+//     $li = $("<li id='clueB'>").text(newClue);
+//     $( "#clueBlue" ).append( $li );
 
-//     currentPlayer = color + "FA";
-//     color === "blue" ? blueFAmove() : redFAmove();
+//     currentPlayer = "blueFA";
+//     blueFAmove();
 //   });
 // };
 
-function blueSubmit() {
-  currentPlayer = "blueSM"
-  $("#send-buttonB").attr("disabled", false);
-  $("select").eq(0).attr("disabled", false);
-  $("#textareaB").attr("disabled", false);
-  $("#textareaB").attr("placeholder", "Uplink enabled...Enter your single word clue here")
-  $("#send-buttonB").attr('value', 'TRANSMIT');
-  $( "#send-buttonB" ).click(function(evt) {
-    evt.preventDefault();
 
-    clueValue = $('select')[0].value
-    var newClue = $('#textareaB').val() + ' ' + clueValue;
-    $li = $("<li id='clueB'>").text(newClue);
-    $( "#clueBlue" ).append( $li );
+// function redSubmit() {
+//   currentPlayer = "redSM"
+//   $("#send-buttonR").attr("disabled", false);
+//   $("select").eq(1).attr("disabled", false);
+//   $("#textareaR").attr("disabled", false);
+//   $("#textareaR").attr("placeholder", "Uplink enabled...Enter your single word clue here")
+//   $("#send-buttonR").attr('value', 'TRANSMIT');
+//   $( "#send-buttonR" ).click(function(evt) {
+//     evt.preventDefault();
+//     clueValue = $('select')[1].value
+//     var newClue = $('#textareaR').val() + ' ' + clueValue;
+//     $li = $("<li id='clueR'>").text(newClue);
+//     $( "#clueRed" ).append( $li );
 
-    currentPlayer = "blueFA";
-    blueFAmove();
-  });
-};
-
-
-function redSubmit() {
-  currentPlayer = "redSM"
-  $("#send-buttonR").attr("disabled", false);
-  $("select").eq(1).attr("disabled", false);
-  $("#textareaR").attr("disabled", false);
-  $("#textareaR").attr("placeholder", "Uplink enabled...Enter your single word clue here")
-  $("#send-buttonR").attr('value', 'TRANSMIT');
-  $( "#send-buttonR" ).click(function(evt) {
-    evt.preventDefault();
-    clueValue = $('select')[1].value
-    var newClue = $('#textareaR').val() + ' ' + clueValue;
-    $li = $("<li id='clueR'>").text(newClue);
-    $( "#clueRed" ).append( $li );
-
-    currentPlayer = "redFA";
-    redFAmove();
-  });
-};
+//     currentPlayer = "redFA";
+//     redFAmove();
+//   });
+// };
 
 
 // remove submit during spy master round
@@ -445,3 +449,10 @@ $("#refreshWords").on('click', function() {
   setBoard();
   wordInBox();
 });
+
+
+
+
+// $("<div><h1>BLUE WINS</h1><button>Play Again!</button></div>").css({position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "indianred", color: "white"})
+// [
+
