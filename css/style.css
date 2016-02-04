@@ -279,21 +279,7 @@ div.timer {
   margin-left: -200px;
 }
 
-/*
-#select-blue, #send-button-blue {
-  box-shadow: 0 0 0 0 #0198E1 inset, 0.2em 0.1em 0 0 #0EBFE9;
-  border: 0.2em solid #444;
-  color: #2B4F81;
-  font-weight: bolder;
-}
 
-#select-red, #send-button-red {
-  box-shadow: 0 0 0 0 #cd5c5c inset, 0.2em 0.1em 0 0 ##d26c6c;
-  border: 0.2em solid #444;
-  color: #4e1818 ;
-  font-weight: bolder;
-}
-*/
 #bluestart {
   box-shadow: 0 0 0 0 #0198E1 inset, 0.2em 0.1em 0 0 #0EBFE9;
   border: 0.2em solid #0198E1;
@@ -312,10 +298,6 @@ div.timer {
 
 #blueactivate {
   color: #0EBFE9;
-}
-
-#redactivate {
-  color: #d26c6c;
 }
 
 
@@ -337,7 +319,9 @@ div.timer {
   color: #fff;
 }
 
-
+#redactivate {
+  color: #d26c6c;
+}
 
 
 /*Buttons animation*/
@@ -399,7 +383,7 @@ button:hover {
 .transition {
   background: white;
   width: 100%;
-  height: 100%;
+  height: 300%;
   position: absolute;
   z-index: +1;
   top: 0px;
