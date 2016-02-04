@@ -98,7 +98,7 @@ function blueSMmove() {
 };
 
 function blueFAmove() {
-  transitionSMsubmit()
+  transitionPage($("#sm-transition"));
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -116,7 +116,7 @@ function redSMmove() {
 };
 
 function redFAmove() {
-  transitionSMsubmit()
+  transitionPage($("#sm-transition"));
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -508,25 +508,18 @@ var $center = $(".center");
 
 function transitionActivate() {
   console.log("transition actived")
-  switch (board[indexClicked].color) {
-    case "blue":
-      $("<div class='transition hidden'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center);
-      console.log("blue activated");
-      break;
-    case "red":
-      $("<div class='transition hidden'><p>RED AGENT CONTACTED</p></div>").appendTo($center);
-      console.log("red activated")
-      break;
-    case "#fff2e5":
-      $("<div class='transition hidden'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center);
-      console.log("BYSTANDER activated")
-      break;
-    case "black":
-        $("<div class='transition hidden'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center);
-        console.log("black activated")
-      }
-  $(".activateScreen").fadeOut( 2000 )
+  if (board[indexClicked].color === "blue" && currentTeam === "red") {
+      transitionPage($('#blueactivate'));
+    } else if (board[indexClicked].color === "red" && currentTeam === "blue") {
+      transitionPage($('#redactivate'));
+    } else if (board[indexClicked].color === "black")  {
+    transitionPage($('#death'));
+    } else {
+    transitionPage($('#wrong'));
+  }
 }
+transitionPage()
+
 
 function transitionPage(transition) {
   var $clone = $(transition).clone()
@@ -538,8 +531,27 @@ function transitionPage(transition) {
     });
 
 }
+// function transitionSMsubmit() {
+//   var $clone = $("#sm-transition").clone()
+//   $clone.appendTo($("div:first"));
+//   $clone.slideToggle(1000);
+//   $("#accept").on("click", function() {
+//     duration = 180;
+//     $clone.remove();
+//     });
 
-transitionPage("#sm-transition")
+// }
+
+// showText($("div:first"),"BLUE AGENT CONTACTED",index, 1000);
+
+// var showText = function (target, message, index, interval) {
+//  if (index < message.length) {
+//    $(target).append(message[index++]);
+//    setTimeout(function () { showText(target, message, index, interval); }, interval);
+//  }
+// }
+
+// transitionPage("#sm-transition")
 
 
 // typing animation
