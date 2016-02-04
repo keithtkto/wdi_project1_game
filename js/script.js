@@ -206,6 +206,7 @@ function endRound() {
   eightBall();
   wrongAgent();
   correctAgent();
+  foundAllAgent();
 }
 
 function eightBall() {
@@ -237,18 +238,24 @@ function wrongAgent() {
     //need animation for this
 function correctAgent() {
   clueValue--
-  if (clueValue === 0 && currentPlayer === "blueFA") {
+  if (clueValue == 0 && currentPlayer === "blueFA") {
     // console.log(clueValue);
     console.log("blue got all the correct agent activated");
-    win("blue");
-    // redSMmove();
-  } else if (clueValue === 0 && currentPlayer === "blueFA") {
+    redSMmove();
+  } else if (clueValue == 0 && currentPlayer === "blueFA") {
     // console.log(clueValue);
     console.log("red got the correct agent activated");
-    win("red");
-    // blueSMmove();
+    blueSMmove();
   };
 };
+
+function foundAllAgent() {
+  if (blueSleeperAgents === 0) {
+    win("blue");
+  } else if (redSleeperAgents === 0) {
+    win("red");
+  }
+}
 
 /*
   if (currentPlayer === "blueFA" && #box selected# !== "blue" ) {
