@@ -6,6 +6,7 @@ console.log("CAPCOM, We're GO for Powered Descent.");
 
 
 
+
 //Timer
 var display = $('#time');
 
@@ -84,21 +85,26 @@ function startGame() {
   // blue spymaster start
 }; // end of startGame()
 
+function wait(){
+setTimeout(renderSM, 1000);
+}
+
 
 // 1. MOVES
 
 function blueSMmove() {
+  transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA();
   disableSubmit();
-  renderSM();
+  wait()
   eventOffSM()
   // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
 function blueFAmove() {
-  transitionPage($("#sm-transition"));
+  transitionPage($("#sm-transition"),1500);
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -106,17 +112,18 @@ function blueFAmove() {
 };
 
 function redSMmove() {
+  transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA()
   disableSubmit();
-  renderSM();
+  wait()
   eventOffSM();
   // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
 function redFAmove() {
-  transitionPage($("#sm-transition"));
+  transitionPage($("#sm-transition"),1500);
   disableSubmit()
   renderFA();
   clickOnFA();
@@ -514,17 +521,15 @@ function transitionActivate() {
       transitionPage($('#redactivate'));
     } else if (board[indexClicked].color === "black")  {
     transitionPage($('#death'));
-    } else {
-    transitionPage($('#wrong'));
-  }
+    }
 }
-transitionPage()
 
 
-function transitionPage(transition) {
+
+function transitionPage(transition,time) {
   var $clone = $(transition).clone()
   $clone.appendTo($("div:first"));
-  $clone.slideToggle(1000);
+  $clone.slideToggle(time);
   $("#accept").on("click", function() {
     duration = 180;
     $clone.remove();

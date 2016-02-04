@@ -300,13 +300,22 @@ div.timer {
   color: #2B4F81;
   font-weight: bolder;
   text-transform: uppercase;
-  width: 250px;
+  width: 320px;
+  text-align: left;
 }
 
 #bluestart:hover, #select-blue:hover, #send-button-blue:hover  {
   box-shadow: 0 4em 0 0 #0198E1 inset, 0em 0em 0 0 #0198E1;
   -webkit-transform: translate(0.3em, 0.2em);
   color: #fff;
+}
+
+#blueactivate {
+  color: #0EBFE9;
+}
+
+#redactivate {
+  color: #d26c6c;
 }
 
 
@@ -318,7 +327,8 @@ div.timer {
   color: #4e1818 ;
   font-weight: bolder;
   text-transform: uppercase;
-  width: 250px;
+  width: 320px;
+  text-align: right;
 }
 
 #redstart:hover, #select-red:hover, #send-button-red:hover {
