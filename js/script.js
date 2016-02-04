@@ -388,21 +388,22 @@ function playerSubmit(color) {
   $("#send-button-" + color).removeClass("disabled");
   $("#textarea-" + color).removeClass("disabled");
   $("#select-" + color).removeClass("disabled")
+  $( "#send-button-" + color ).unbind();
   $( "#send-button-" + color ).click(function(evt) {
     evt.preventDefault();
     color === "blue" ? clueValue = $('select')[0].value :
                        clueValue = $('select')[1].value ;
     if (clueValue == 11) {
       console.log("selected X")
-      $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X");
-      $( "#clue-" + color).append( $li );
+      // $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X");
+      $( "#clue-" + color).append( $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X"));
     } else if (clueValue == 12) {
       console.log("selected INF")
-      $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞");
-      $( "#clue-" + color).append( $li );
+      // $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞");
+      $( "#clue-" + color).append( $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞"));
     } else {
       $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + (clueValue));
-      $( "#clue-" + color).append( $li );
+      $( "#clue-" + color).append( $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + (clueValue)) );
     }
 
     currentPlayer = color + "FA";
