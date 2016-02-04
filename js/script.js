@@ -510,26 +510,26 @@ function transitionActivate() {
   console.log("transition actived")
   switch (board[indexClicked].color) {
     case "blue":
-      $("<div class='activateScreen'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center);
+      $("<div class='transition hidden'><p>BLUE AGENT CONTACTED</p></div>").appendTo($center);
       console.log("blue activated");
       break;
     case "red":
-      $("<div class='activateScreen'><p>RED AGENT CONTACTED</p></div>").appendTo($center);
+      $("<div class='transition hidden'><p>RED AGENT CONTACTED</p></div>").appendTo($center);
       console.log("red activated")
       break;
     case "#fff2e5":
-      $("<div class='activateScreen'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center);
+      $("<div class='transition hidden'><p>MISSION INTERRUPTED BYSTANDER</p></div>").appendTo($center);
       console.log("BYSTANDER activated")
       break;
     case "black":
-        $("<div class='activateScreen'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center);
+        $("<div class='transition hidden'><p>MISSION FOILED BY ASSASSIN</p></div>").appendTo($center);
         console.log("black activated")
       }
   $(".activateScreen").fadeOut( 2000 )
 }
 
-function transitionSMsubmit() {
-  var $clone = $("#sm-transition").clone()
+function transitionPage(transition) {
+  var $clone = $(transition).clone()
   $clone.appendTo($("div:first"));
   $clone.slideToggle(1000);
   $("#accept").on("click", function() {
@@ -538,6 +538,8 @@ function transitionSMsubmit() {
     });
 
 }
+
+transitionPage("#sm-transition")
 
 
 // typing animation
