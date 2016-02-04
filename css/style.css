@@ -313,7 +313,7 @@ div.timer {
 
 
 #redstart {
-  box-shadow: 0 0 0 0 #cd5c5c inset, 0.2em 0.1em 0 0 ##d26c6c;
+  box-shadow: 0 0 0 0 #cd5c5c inset, 0.2em 0.1em 0 0 #d26c6c;
   border: 0.2em solid #cd5c5c;
   color: #4e1818 ;
   font-weight: bolder;

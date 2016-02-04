@@ -4,6 +4,27 @@ console.log("EECOM GO");
 console.log("SURGEON GO");
 console.log("CAPCOM, We're GO for Powered Descent.");
 
+//Timer
+var display = $('#time');
+
+var startTimer = function(display) {
+    // var timer = duration;
+    setInterval(function () {
+        var minutes = parseInt(duration / 60, 10),
+            seconds = parseInt(duration % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--duration < 0) {
+            display.text("HURRY!!");;
+        }
+    }, 1000);
+}
+
+
 
 // global var
 var redSleeperAgents  = 0,
@@ -12,6 +33,7 @@ var redSleeperAgents  = 0,
     day               = 0,
     redScore          = 0,
     blueScore         = 0,
+    duration          = 180,
     winner            = "", //'blue' 'red' is a user input, default blue
     currentPlayer     = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
     currentTeam       = "", // blue" or "red"
@@ -45,7 +67,7 @@ redStock  = Array(25).fill("red", 0, 9)
 
 /* create game board */
 // 1. click to start
-
+startTimer(display);
 
 /* game operation */
 function startGame() {
@@ -64,11 +86,12 @@ function startGame() {
 // 1. MOVES
 
 function blueSMmove() {
-  renderRemainingSA()
+  duration = 180;
+  renderRemainingSA();
   disableSubmit();
   renderSM();
   eventOffSM()
-  startTimer(threeMinutes, display);
+  // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
@@ -81,11 +104,12 @@ function blueFAmove() {
 };
 
 function redSMmove() {
+  duration = 180;
   renderRemainingSA()
   disableSubmit();
   renderSM();
   eventOffSM();
-  startTimer(threeMinutes, display);
+  // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
 };
 
@@ -345,8 +369,8 @@ function playerSubmit(color) {
   day += 0.5;
   $("#day").text("MISSION: " + mission + " DAY: " + day);
   //change background color
-  color === "blue" ? $("body").css("background-color", "#e5e5ff") :
-                     $("body").css("background-color", "#ffe5e5") ;
+  color === "blue" ? $("body").css("background-color", "#ccccff") :
+                     $("body").css("background-color", "#ffcccc") ;
   //button status change
   currentPlayer = color + "SM";
   $("#send-button-" + color).attr("disabled", false);
@@ -413,34 +437,6 @@ function pass() {
 
   });
 }
-
-
-//Timer
-var threeMinutes = 60 * 3,
-    display = $('#time');
-
-var startTimer = function(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.text(minutes + ":" + seconds);
-
-        if (--timer < 0) {
-            display.text("HURRY!!");;
-        }
-    }, 1000);
-}
-
-
-
-
-
-
 
 
 
@@ -529,8 +525,7 @@ function transitionSMsubmit() {
   $(".activateScreen > p").fadeOut( 2000 );
   $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT</button>").appendTo($(".activateScreen"))
   $("#accept").on("click", function() {
-    clearInterval(startTimer);
-    startTimer(threeMinutes, display);
+    duration = 180;
     // $(".activateScreen").fadeOut( 1000 );
     $(".activateScreen").remove();
     });
