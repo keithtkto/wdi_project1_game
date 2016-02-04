@@ -387,15 +387,14 @@ function playerSubmit(color) {
                        clueValue = $('select')[1].value ;
     if (clueValue == 11) {
       console.log("selected X")
-      $li = $("<li id='clue-'" + color + ">").text("X");
+      $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X");
       $( "#clue-" + color).append( $li );
     } else if (clueValue == 12) {
       console.log("selected INF")
-      $li = $("<li id='clue-'" + color + ">").text("∞");
+      $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞");
       $( "#clue-" + color).append( $li );
     } else {
-      var newClue = $('#textarea-' + color).val() + ' ' + (clueValue - 1) ;
-      $li = $("<li id='clue-'" + color + ">").text(newClue);
+      $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + (clueValue));
       $( "#clue-" + color).append( $li );
     }
 
