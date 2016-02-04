@@ -321,7 +321,7 @@ function renderRemainingSA() {
 function clickOnFA() {
   for (i= 0; i < 25; i++) {
     if (board[i].clicked === false) {
-      $("#box"+i).on("click", activate);
+      // $("#box"+i).on("click", activate);
       $('.word_box').eq(i).on("click", activate);
     }
   }
