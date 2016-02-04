@@ -224,13 +224,13 @@ button.startteam {
 }
 
 .blue {
-  background: #63daf6;
+  background: -webkit-linear-gradient(top, #77BFC7 0%, #3b80c0 100%);
   order : 1;
 }
 
 
 .red {
-  background: #d26c6c;
+  background: -webkit-linear-gradient(top, #F75D59 0%,#e4201b 100%);
   order: 3;
 }
 
