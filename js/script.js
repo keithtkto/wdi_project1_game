@@ -4,6 +4,8 @@ console.log("EECOM GO");
 console.log("SURGEON GO");
 console.log("CAPCOM, We're GO for Powered Descent.");
 
+
+
 //Timer
 var display = $('#time');
 
@@ -527,23 +529,16 @@ function transitionActivate() {
 }
 
 function transitionSMsubmit() {
-  $(".activateScreen").remove();
-  $("<div class='activateScreen'><p>CLUE SUBMITTED...<br>INITIATIZING...<br>ENCYPTING...<br>SENT...</p></div>").appendTo($center);
-  $(".activateScreen > p").fadeOut( 2000 );
-  $("<p>FIELD AGAENT,<br>ARE YOU READY TO RECEIVE?</p><button class='accept' id='accept'>ACCEPT</button>").appendTo($(".activateScreen"))
+  var $clone = $("#sm-transition").clone()
+  $clone.appendTo($("div:first"));
+  $clone.slideToggle(1000);
   $("#accept").on("click", function() {
     duration = 180;
-    // $(".activateScreen").fadeOut( 1000 );
-    $(".activateScreen").remove();
+    $clone.remove();
     });
 
 }
 
 
-
-// $(".activateScreen").fadeIn( "slow" )
-// how the fuck do u fade in???
-
-
-
+// typing animation
 

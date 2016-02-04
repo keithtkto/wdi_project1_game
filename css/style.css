@@ -385,39 +385,40 @@ button:hover {
 
 
 
+/* code for animated blinking cursor */
+.transition {
+  background: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: +1;
+  top: 0px;
+  left: 0px;
+  text-align: ;
+  color: white;
+
+}
+
+.mid {
+  position: absolute;
+  background: #191919;
+  border-radius: 20px;
+  margin: 20% 20%;
+  text-align: left;
+  font-size: 200px;
+  border: 3px solid black;
+  padding: 10px;
+
+}
+
+
+.accept {
+  position: absolute;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: bolder;
+}
 
 
 
 /*end of type animation*/
-
-/*@media (max-width:650px) {
-  center {
-    display: absolute;
-
-  }
-
-  main {
-    display: absolute;
-    clear: both;
-    order : 3;
-  }
-
-  .blue {
-    background: #00BFFF;
-    float: left;
-    order : 1;
-    }
-
-
-.red {
-    background: #FF6347;
-    float: right;
-    order : 2;
-    }
-
-
-}
-*/
-
-
-
