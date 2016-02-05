@@ -247,11 +247,21 @@ function foundAllAgent() {
 
 function renderFA() {
   for (var i =0; i < 25; i++) {
+    if (board[i].clicked === true) {
+      var spyImg = "";
+
+      if (board[i].color === "blue") {
+        spyImg = "url(./assets/cobaltspy.png)";
+      } else if (board[i].color === "red") {
+        spyImg = "url(./assets/crimsonspy.png)";
+      } else if (board[i].color === "#fff2e5") {
+        spyImg = "url(./assets/bystander.png)";
+      }
+      $('.word_box').eq(i).css("background", spyImg);
+      $("#box"+i).text("_").css("background", "none");
+    } else if (board[i].clicked === false) {
     $('.word_box').eq(i).css('background', '#fff2e5');
     $("#box"+i).css('background', '#fff2e5');
-    if (board[i].clicked === true) {
-      $('.word_box').eq(i).css('background', board[i].color);
-      $("#box"+i).text("UNAVAILABLE").css('background', board[i].color);
     }
   }
 }
@@ -260,19 +270,28 @@ function renderFA() {
 
 function renderSM() {
   for (var i =0; i < 25; i++) {
-  var bc = "";
-    if (board[i].color === "blue") {
-      bc = "-webkit-linear-gradient(top, #77BFC7 0%, #3b80c0 100%)";
-    } else if (board[i].color === "red") {
-      bc = "-webkit-linear-gradient(top, #F75D59 0%,#e4201b 100%)";
-    } else if (board[i].color === "black") {
-      bc = "-webkit-linear-gradient(top, #757575 0%,#424242 100%)";
-    } else {
-      bc = board[i].color;
-    }
-    $('.word_box').eq(i).css('background', bc)
     if (board[i].clicked === true) {
-      $("#box"+i).text("UNAVAILABLE").css('background', bc);
+      var spyImg = "";
+      if (board[i].color === "blue") {
+        spyImg = "url(./assets/cobaltspy.png)";
+      } else if (board[i].color === "red") {
+        spyImg = "url(./assets/crimsonspy.png)";
+      } else if (board[i].color === "#fff2e5") {
+        spyImg = "url(./assets/bystander.png)";
+      }
+      $("#box"+i).text("_").css("background-image", spyImg);
+    } else if (board[i].clicked === false) {
+        var bc = "";
+        if (board[i].color === "blue") {
+          bc = "-webkit-linear-gradient(top, #77BFC7 0%, #3b80c0 100%)";
+        } else if (board[i].color === "red") {
+          bc = "-webkit-linear-gradient(top, #F75D59 0%,#e4201b 100%)";
+        } else if (board[i].color === "black") {
+          bc = "-webkit-linear-gradient(top, #757575 0%,#424242 100%)";
+        } else {
+          bc = board[i].color;
+        }
+    $('.word_box').eq(i).css('background', bc)
     }
   }
 }

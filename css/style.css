@@ -249,6 +249,7 @@ button.startteam {
   min-height: 70px;
   border-radius: 7px;
   margin: 0 auto;
+  background-size: cover;
 }
 
 .words {
