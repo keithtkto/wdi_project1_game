@@ -219,13 +219,13 @@ function wrongAgent() {
 };
 
 //3. ending by running out of moves
-    //need animation for this
+//need animation for this
 function correctAgent() {
   clueValue--
-  if (clueValue == 0 && currentPlayer === "blueFA") {
+  if (clueValue < 0 && currentPlayer === "blueFA") {
     transitionPage($("#uplink"),900);
     redSMmove();
-  } else if (clueValue == 0 && currentPlayer === "blueFA") {
+  } else if (clueValue < 0 && currentPlayer === "redFA") {
     transitionPage($("#uplink"),900);
     blueSMmove();
   };
@@ -258,7 +258,7 @@ function renderFA() {
         spyImg = "url(./assets/bystander.png)";
       }
       $('.word_box').eq(i).css("background", spyImg);
-      $("#box"+i).text("_").css("background", "none");
+      $("#box"+i).remove();
     } else if (board[i].clicked === false) {
     $('.word_box').eq(i).css('background', '#fff2e5');
     $("#box"+i).css('background', '#fff2e5');
@@ -462,6 +462,12 @@ $('#redstart').on('click',function(){
   currentTeam = "red";
   startGame();
   redSMmove();
+});
+
+//block screen
+
+$("#blockscreen").on('click', function(){
+  transitionPage($("#block"), 1000);
 });
 
 // restart game
