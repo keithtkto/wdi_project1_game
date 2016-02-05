@@ -47,6 +47,7 @@ redStock  = Array(25).fill("red", 0, 9)
 
 /* game operation */
 function startGame() {
+  $("li").remove();
   //adding properties to board[]
   setBoard();
   setColor();
@@ -58,11 +59,6 @@ function startGame() {
   $(".words").show();
   // blue spymaster start
 }; // end of startGame()
-
-function wait(){
-setTimeout(renderSM, 1000);
-}
-
 
 // 1. MOVES
 function blueSMmove() {
@@ -548,6 +544,11 @@ function transitionPage(transition,time) {
     $clone.remove();
     });
 
+}
+
+//Time delay so the FA wont see the secret identities
+function wait(){
+setTimeout(renderSM, 1000);
 }
 
 //Timer
