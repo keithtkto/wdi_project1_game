@@ -443,7 +443,7 @@ function pass() {
     } else {
       console.log("Spymaster can not pass their turn");
     }
-
+    transitionPage($("#uplink"),900);
   });
 }
 
