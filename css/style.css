@@ -1,23 +1,15 @@
-/*http://imgur.com/gallery/MV97Xtc*/
 
 body {
   text-align: center;
   display: flex;
   flex-direction: column;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /*text-transform: uppercase;*/
-  background: white; /* For browsers that do notred support gradients */
-  /*
-  background: -webkit-linear-gradient(left, #63daf6 , #d26c6c);
-  background: -o-linear-gradient(right, #63daf6, #d26c6c);
-  background: -moz-linear-gradient(right, #63daf6, #d26c6c);
-  background: linear-gradient(to right, #63daf6 , #d26c6c);
-  */
+  background: white;
 }
 
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
 }
 
 h1 {
@@ -25,14 +17,10 @@ h1 {
     margin-top: 10px;
     font-weight: bolder;
     padding-bottom: 10px;
-
 }
-
-
 
 main {
   text-align: center;
-  /*border: 1px solid brown;*/
   width: 70%;
   min-height: 400px;
   min-width: 370px;
@@ -63,7 +51,6 @@ h3 {
 
 h5 {
   margin-left: 24px;
-  /*margin-right: 13px;*/
   float: left;
   position: absolute;
   bottom: 73px;
@@ -78,7 +65,6 @@ h5 {
 h6 {
   font-size: 15px;
   margin: 0;
-
 }
 
 form {
@@ -96,13 +82,11 @@ li {
 }
 
 footer {
-  /*border: 1px solid brown;*/
   text-align: center;
   color: blue;
   font-size: -1px ;
   line-height: 1.1;
   font-weight: 100;
-
 }
 
 p {
@@ -112,6 +96,7 @@ p {
 a {
   font-size: 12px;
 }
+
 /* things inside powermac*/
 form {
   position: absolute;
@@ -143,11 +128,6 @@ textarea {
 .empty {
   width: 20px;
 }
-
-
-
-
-
 
 .startScreen {
   background: white; /* For browsers that do notred support gradients */
@@ -213,7 +193,6 @@ button.startteam {
   min-height: 400px;
   border-radius: 10px;
   position: relative;
-  /* line-height: 1em; */
   text-decoration: none;
   display: block;
   transition: 0.25s box-shadow, 0.25s -webkit-transform;
@@ -233,12 +212,10 @@ button.startteam {
   order : 1;
 }
 
-
 .red {
   background: -webkit-linear-gradient(top, #F75D59 0%,#e4201b 100%);
   order: 3;
 }
-
 
 .word_box {
   background: #fff2e5;
@@ -263,7 +240,6 @@ button.startteam {
   border-bottom: 2px solid #444;
 }
 
-
 .infoBox {
   display: block;
 
@@ -273,7 +249,6 @@ button.startteam {
   border-bottom: 1px solid #444;
   height: 60px;
   margin-top: 6px;
-
 }
 
 div.timer {
@@ -331,9 +306,7 @@ div.timer {
   color: #d26c6c;
 }
 
-
 /*Buttons animation*/
-
 button, input, select, textarea{
   color: #444;
   line-height: 1em;
@@ -346,15 +319,11 @@ button, input, select, textarea{
   text-align: center;
 }
 
-
 button {
   box-shadow: 0 0 0 0 #444 inset, 0.3em 0.2em 0 0 #bbb;
   transition: 0.25s box-shadow, 0.25s -webkit-transform;
   color: inherit;
 }
-
-
-
 
 button-small, input-small, select-small {
   padding: 0.7em;
@@ -385,8 +354,6 @@ button:hover {
   font-weight: 300;
 }
 
-
-
 /* code for animated blinking cursor */
 .transition {
   background: white;
@@ -396,9 +363,7 @@ button:hover {
   z-index: +1;
   top: 0px;
   left: 0px;
-  text-align: ;
   color: white;
-
 }
 
 .mid {
@@ -410,9 +375,7 @@ button:hover {
   font-size: 200px;
   border: 3px solid black;
   padding: 10px;
-
 }
-
 
 .accept {
   position: absolute;

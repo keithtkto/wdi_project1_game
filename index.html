@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>NOC LIST//CODENAMES</title>
@@ -10,7 +11,11 @@
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 </head>
+
+
 <body>
+
+<!-- Transition Screen (hidden) -->
 <div>
 </div>
 
@@ -67,25 +72,15 @@
       <h1 id="fill">YOU ARE ELMINATED BY THE ASSASSIN</h1>
   </div>
 </div> -->
-
-
-
-
-
-
-
 <!--GAME BOARD HTML-->
 
 <div class="top">
   <h1>
     NOC LIST || CODENAMES
   </h1>
-
-
 </div>
 
 <div class="center">
-
   <div class="powermac blue" id="bluemac">
     <h2>
       CLUES
@@ -99,7 +94,7 @@
         SLEEPER<br>AGENTS<br>REMAINS
       </h5>
       <h3 class="number" id="blueSleeper">
-      ?
+        ?
       </h3>
       <form id="wordclue">
         <div class="empty"></div>
@@ -123,6 +118,7 @@
       </form>
     </div>
   </div>
+
   <div class="powermac red" id="redmac">
     <h2>
       CLUES
@@ -136,10 +132,8 @@
       </h5>
 
       <h3 class="number" id="redSleeper">
-      ?
+        ?
       </h3>
-
-
       <form id="wordclue">
         <textarea id="textarea-red" class="word-text" placeholder="Initiatizing"></textarea>
         <div class="mac-bottom">
@@ -175,12 +169,9 @@
       <button class="startteam" id="bluestart">COBALT First</button>
       <button class="startteam" id="redstart">CRIMSON First</button>
     <div>
-      <button id="rulebook" ><a target="_blank" href="https://github.com/keithtkto/wdi_project1_game_noc_list">Rule Book / Tutorial </button></a>
+      <button id="rulebook" ><a target="_blank" href="https://github.com/keithtkto/wdi_project1_game_noc_list">Rule Book / Tutorial </a></button>
     </div>
   </div>
-
-
-
 </div>
 
 <div class="nav">
@@ -193,7 +184,7 @@
       COBALT 0 CRIMSON 0
     </h6>
   </div>
-  <button id="rulebook" ><a target="_blank" href="https://github.com/keithtkto/wdi_project1_game_noc_list">Rule Book / Tutorial</button></a>
+  <button id="rulebook" ><a target="_blank" href="https://github.com/keithtkto/wdi_project1_game_noc_list">Rule Book / Tutorial</a></button>
   <button id="blockscreen">Block Screen</button>
   <button id="restartGame">Restart Game</button>
   <button id="passFA">PASS</button>
@@ -201,9 +192,6 @@
   <button id="refreshWords">Refresh Words</button>
   <div class="timer" id="timer"><span id="time">03:00</span></div>
 </div>
-
-
-
 
 <footer>
   <p>
@@ -214,14 +202,6 @@
     <a href="http://codenamesgame.com/">https://github.com/keithtkto/wdi_project1_game_noc_list.git</a>
   </p>
 </footer>
-
-
-
-
-
-
-
-
 
   <script src="js/wordlist.js"></script>
   <script src="js/script.js"></script>

@@ -57,20 +57,17 @@ function startGame() {
   disableSubmit()
   pass()
   $(".words").show();
-  // blue spymaster start
-}; // end of startGame()
+} // end of startGame()
 
 // 1. MOVES
 function blueSMmove() {
-  // transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA();
   disableSubmit();
   wait()
   eventOffSM()
-  // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
-};
+}
 
 function blueFAmove() {
   transitionPage($("#sm-transition"),1500);
@@ -78,18 +75,16 @@ function blueFAmove() {
   renderFA();
   clickOnFA();
   clickOffFA();
-};
+}
 
 function redSMmove() {
-  // transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA()
   disableSubmit();
   wait()
   eventOffSM();
-  // startTimer(threeMinutes, display);
   playerSubmit(currentTeam);
-};
+}
 
 function redFAmove() {
   transitionPage($("#sm-transition"),1500);
@@ -97,7 +92,7 @@ function redFAmove() {
   renderFA();
   clickOnFA();
   clickOffFA();
-};
+}
 
 // 1. Random word generator and remove the selected words from word list
 // 2. change board into arrays of object {color, word}
@@ -183,7 +178,6 @@ function win(teamColor) {
 //ending a round (activated around each round)
 //nested within activate
 function endRound() {
-  // transitionActivate();
   eightBall();
   wrongAgent();
   correctAgent();
@@ -192,11 +186,9 @@ function endRound() {
 
 function eightBall() {
   if (currentPlayer === "blueFA" && board[indexBlack].clicked === true) {
-    // winner = "red team";
     win("red");
     console.log("blue team activated assassin")
   } else if (currentPlayer === "redFA" && board[indexBlack].clicked === true) {
-    // winner = "blue team";
     console.log("red team activated assassin")
     win("blue");
   }
@@ -214,8 +206,8 @@ function wrongAgent() {
     console.log("red team round ends", board[indexClicked])
     transitionPage($("#uplink"),900);
     blueSMmove();
-  };
-};
+  }
+}
 
 //3. ending by running out of moves
 //need animation for this
@@ -227,8 +219,8 @@ function correctAgent() {
   } else if (clueValue < 0 && currentPlayer === "redFA") {
     transitionPage($("#uplink"),900);
     blueSMmove();
-  };
-};
+  }
+}
 
 function foundAllAgent() {
   if (blueSleeperAgents === 0) {
@@ -319,7 +311,6 @@ function renderRemainingSA() {
 function clickOnFA() {
   for (i= 0; i < 25; i++) {
     if (board[i].clicked === false) {
-      // $("#box"+i).on("click", activate);
       $('.word_box').eq(i).on("click", activate);
     }
   }
@@ -376,7 +367,7 @@ function playerSubmit(color) {
   //change background color
   color === "blue" ? $("body").css("background-color", "#ccccff") :
                      $("body").css("background-color", "#ffcccc") ;
-  //button status change
+  //button status change //need to condense these when i get a chance
   currentPlayer = color + "SM";
   $("#send-button-" + color).attr("disabled", false);
   $("#select-" + color).attr("disabled", false);
@@ -393,11 +384,9 @@ function playerSubmit(color) {
                        clueValue = $('select')[1].value ;
     if (clueValue == 11) {
       console.log("selected X")
-      // $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X");
       $( "#clue-" + color).append( $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "X"));
     } else if (clueValue == 12) {
       console.log("selected INF")
-      // $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞");
       $( "#clue-" + color).append( $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + "∞"));
     } else {
       $li = $("<li id='clue-'" + color + ">").text($('#textarea-' + color).val() + ' ' + (clueValue));

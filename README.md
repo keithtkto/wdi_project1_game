@@ -1,9 +1,9 @@
 #NOC LIST //CODENAMES
 
 ##Brief Tutorial 
-####Game Starting screen, pick a team to start first (you can click on this img to play)
+####Game Starting screen, pick a team to start first (you can click on this imgage to play)
 
-[![Game starting screen](https://i.imgur.com/m7wNi1U.png)](http://keithtkto.github.io/wdi_project1_game_noc_list/)
+[![Game starting screen](https://i.imgur.com/mR0fz0h.png)](http://keithtkto.github.io/wdi_project1_game_noc_list/)
 
 
 **4+ Players turn base party board games****Players split into two team with even numbers and skills**Each team has one spymaster (giving one word and one number available), other will play as field agents (using the clue to guess the identity of their assigned sleeper agents).
