@@ -1,15 +1,16 @@
 #NOC LIST //CODENAMES
 
-##Brief description 
+##Brief tutorial 
 ####Game Starting screen, pick a team to start first (pick to play)
 
 [![Game starting screen](https://i.imgur.com/m7wNi1U.png)](http://keithtkto.github.io/wdi_project1_game_noc_list/)
 
 ####Spymaster's screen
-![Spymaster screen](https://i.imgur.com/BMW5cpD.png)
+![](https://i.imgur.com/RkuokCw.png)
 Enter one-word clue in textbox and select a number to show how many codenames relate to your clue, also background color indicate which team is in action.
+
 ####Field agent's screen
-![Field agents screen](https://i.imgur.com/kHxPy0I.png)
+![Field agents screen](https://i.imgur.com/a4wghLN.png)
 Reading the given clue in the clue box, click on the codenames to activate them.
 
 

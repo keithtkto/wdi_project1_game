@@ -250,6 +250,7 @@ button.startteam {
   border-radius: 7px;
   margin: 0 auto;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .words {

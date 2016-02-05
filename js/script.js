@@ -483,6 +483,9 @@ $("#restartGame").on('click', function(){
 
 //refresh color only (provide warning for players)
 $("#refreshColor").on('click', function(){
+  for (var i =0; i < 25; i++) {
+    if (board[i].clicked === true) {return};
+  }
   console.log("refresh color");
   setColor();
   renderSM();
@@ -490,6 +493,9 @@ $("#refreshColor").on('click', function(){
 
 //refresh words only (provide warning for players)
 $("#refreshWords").on('click', function() {
+  for (var i =0; i < 25; i++) {
+    if (board[i].clicked === true) {return};
+  }
   event.preventDefault();
   setBoard();
   wordInBox();
