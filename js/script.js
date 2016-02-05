@@ -240,7 +240,6 @@ function renderFA() {
   for (var i =0; i < 25; i++) {
     if (board[i].clicked === true) {
       var spyImg = "";
-
       if (board[i].color === "blue") {
         spyImg = "url(./assets/cobaltspy.png)";
       } else if (board[i].color === "red") {

@@ -230,6 +230,11 @@ button.startteam {
   background-repeat: no-repeat;
 }
 
+.word_box:hover {
+  box-shadow: inset 0 0 0 3px black;
+}
+
+
 .words {
   font-weight: bolder;
   font-size: 16.5px;
