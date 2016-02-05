@@ -1,17 +1,32 @@
 #NOC LIST //CODENAMES
 
-##Brief tutorial 
+##Brief Tutorial 
 ####Game Starting screen, pick a team to start first (you can click on this img to play)
 
 [![Game starting screen](https://i.imgur.com/m7wNi1U.png)](http://keithtkto.github.io/wdi_project1_game_noc_list/)
 
+
+**4+ Players turn base party board games****Players split into two team with even numbers and skills**Each team has one spymaster (giving one word and one number available), other will play as field agents (using the clue to guess the identity of their assigned sleeper agents).
+
+
 ####Spymaster's screen
 ![](https://i.imgur.com/RkuokCw.png)
-Enter one-word clue in textbox and select a number to show how many codenames relate to your clue, also background color indicate which team is in action.
+Enter one-word clue in textbox and select a number to show how many codenames relate to your clue, background color indicate which team is in action. (both spymaster can study the wordlist at the same time, but only one submit the clue at each turn.)
+
+####Transition screen to field agent
+![FA transition screen](https://i.imgur.com/4cAuEwd.png)
+After you submit your clue a transition screen will pop up and allow you to pass the device to the field agents.
 
 ####Field agent's screen
 ![Field agents screen](https://i.imgur.com/a4wghLN.png)
-Reading the given clue in the clue box, click on the codenames to activate them.
+Reading the given clue in the clue box, think about it and click on the codenames to activate them.
+
+####Transition screen back to spymaster
+![](https://i.imgur.com/DG4UBA2.png)
+After you finsih your guess(es), a transition screen will pop up and allow you to pass the device to the opposite team spymaster. 
+
+####Players will take turn until either when all sleeper agent of one team are activated, or one team click on the black (assassin) codename.
+![winning screen](https://i.imgur.com/H4q8lt6.png)
 
 
 #####*more detailed rulebook below
@@ -28,12 +43,16 @@ You are in a spy agency trying to complete missions, however, the spies in the r
 NOC list//Codenames is a 4+ players game. Players split into two teams of similar size and skill level. Each team chooses one player to be their spymaster, and both spymaster sits on the side of the table, while the rest of the players, the field agents sit on the opposite end.  25 codenames and the color keys will be randomly generated each mission (round). The color keys hold the secret identity of the codenames on the screen. Only the spymasters are allowed to see the color key. Don’t let the field agents to peek at the secret identity of the codenames!! 
 
 ##Gameplay
-The starting team starts with 9 sleeper Agents, while the other team has 8. The starting team will give the first clue of the game. Each day (round), the spymasters take turns giving a single word clue and a number suggesting the amount of words related to the clue. The field agent then try to guess which words their spymaster meant. The field agent click on the codenames on the screen, if they guess correctly, they may continue guessing until they run out of ideas, run out of number of guesses, or until they click on the wrong person. Then it is the other teams turn to give a clue and guess. The color in the background indicate which team is in action. The first team to contact all of their sleeper Agents wins.
+The starting team starts with 9 sleeper agents, while the other team has 8. The starting team will give the first clue of the game. Each day (round), the spymasters take turns giving a single word clue and a number suggesting the amount of words related to the clue. The field agent then try to guess which words their spymaster meant. The field agent click on the codenames on the screen, if they guess correctly, they may continue guessing until they run out of ideas, run out of number of guesses, or until they click on the wrong person. Then it is the other teams turn to give a clue and guess. The color in the background indicate which team is in action. The first team to contact all of their sleeper Agents wins.
 
+![game board](https://i.imgur.com/xYBRDDq.png)
+**25 codenames game board**
 ##Giving the ONE WORD CLUE
 When you are the spymaster, you try to think of a ONE WORD CLUE that relates to some of the words your teammates are trying to guess. When you decided on your clue, you type it into your team text box, and also select a number tells your teammates how many codenames are related to your clue. Then click submit.
 Example: If two of your words are bird and star, you can find them in the sky, so you say sky 2.
 You are allowed to give a clue for only one word, but you should try to give at least two. You want to win right!?
+
+![giving clue](https://i.imgur.com/vErh5P7.png)
 
 ##Making Contact with sleeper Agents
 After the spymaster gives a clue, the field agents can see the clue in their team text-box (on the left or right hand side). The field agents try their best to make contact by clicking on the codenames.
@@ -77,12 +96,9 @@ You can also infinity to give your field agents a chance to have a run at in the
 * Block screen - dropdown block screen if game need to be paused
 * Restart game - restart game (does not refresh scores) 
 * Pass - Allow field agents to pass their turn (only available to field agents 
-* Refresh color - refresh tied to the codenames (please only use at the beginning of each mission (rounds)
-* Refresh words - refresh codenames (please only use at the beginning of each mission (rounds)
+* Refresh color - refresh tied to the codenames (only available at the beginning of each mission (rounds)
+* Refresh words - refresh codenames (only available at the beginning of each mission (rounds)
 
-##Warning
-
-Please do not use refresh color or the refresh words botton mid round. It will disrupt the game play. However, you can always Restart game to refresh the round. 
 
 ##Help!!
 If you decide to start from round one, please restart the page.
@@ -123,7 +139,7 @@ Javascript
  
 2. Additional art-work
 
-3. Improved transition screens
+3. Improve transition screens
 
 4. Fix bugs and clean-up the code
 
