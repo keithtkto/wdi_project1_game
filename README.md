@@ -23,7 +23,16 @@ Reading the given clue in the clue box, click on the codenames to activate them.
 The field agents also get one addition guess each round in addition to the number of guesses the spymaster has allowed.
 The field agents can stop guessing anytime (after guessing once), you can push PASS button in the bottom of the page.###TimerWe also have a timer for this online version, however, it does not affect the game. It tells you should hurry up and finish your turn.##Firm RulesYour clue must be related to the meaning of the words, but not the grid number of word or the number of words starting with a particular letter.Letters and numbers are still valid, as long as they are related to the board.The number you selected must be the number of word related to the clue not as a meaning.You can not say any word present on the screen, this also means you can not say part of a compound word until it is covered.##Flexible rules (what is also allows as a clue)* Homonyms* Compound words* Proper Names and title* Acronyms and abbreviation* RhymesExpert clue
 You can use X to indicate that none of the words on the board are related to your clue.
-You can also infinity to give your field agents a chance to have a run at in the wild west and click all the sleeper Agents. However, You are running into a problem of not knowing which one to pick.##Specifications
+You can also infinity to give your field agents a chance to have a run at in the wild west and click all the sleeper Agents. However, You are running into a problem of not knowing which one to pick.
+
+##Warning
+
+Please do not use refresh color or the refresh words botton mid round. It will disrupt the game play. However, you can always Restart game to refresh the round. 
+
+##Help!!
+If you decide to start from round one, please restart the page.
+
+Currently there are only 400 words in the wordlist. The game run out of words after 16 rounds. Please refresh the page to restart the game. ##Specifications
 
 ###Design
 

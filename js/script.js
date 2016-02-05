@@ -55,6 +55,7 @@ function startGame() {
   wordInBox();
   disableSubmit()
   pass()
+  $(".words").show();
   // blue spymaster start
 }; // end of startGame()
 
@@ -120,6 +121,7 @@ drawBoard()
 
 //okay
 function setBoard() {
+  $(".words").show();
   for (var i = 0; i < 25; i++) {
     var numWord = Math.floor( Math.random() * wordArray.length );
 
@@ -136,6 +138,7 @@ function setBoard() {
 function setColor() {
   blueFirst = blueStock.slice(); // COPY the arrays, don't reference them directly
   redFirst  = redStock.slice();
+  $(".words").show();
 
   if (currentTeam === "blue") {
     for (var i = 0; i < 25; i++) {
@@ -258,7 +261,7 @@ function renderFA() {
         spyImg = "url(./assets/bystander.png)";
       }
       $('.word_box').eq(i).css("background", spyImg);
-      $("#box"+i).remove();
+      $("#box"+i).hide();
     } else if (board[i].clicked === false) {
     $('.word_box').eq(i).css('background', '#fff2e5');
     $("#box"+i).css('background', '#fff2e5');
