@@ -1,12 +1,14 @@
 #NOC LIST //CODENAMES
 
 ##Brief description 
-####Game Starting screen, pick a team to start first
-![Game starting screen](https://i.imgur.com/0oFYzuz.png)
-####Spymaster screen
+####Game Starting screen, pick a team to start first (pick to play)
+
+[![Game starting screen](https://i.imgur.com/0oFYzuz.png)](http://keithtkto.github.io/wdi_project1_game_noc_list/)
+
+####Spymaster's screen
 ![Spymaster screen](https://i.imgur.com/d4MiT1U.png)
 Enter one-word clue in textbox and select a number to show how many codenames relate to your clue.
-####Field agents screen
+####Field agent's screen
 ![Field agents screen](https://i.imgur.com/1DYYIjt.png)
 Reading the given clue in the clue box, click on the codenames to activate them.
 
@@ -54,7 +56,7 @@ Javascript
 
 3. Improved transition screens
 
-4. Tidy the codes
+4. Fix bugs and clean-up the code
 
 5. Be able to play on two different screens
 ###Get started (Let's play)
