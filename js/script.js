@@ -203,7 +203,7 @@ function win(teamColor) {
   day = 0;
   mission += 1;
   $("#day").text("MISSION: " + mission + " DAY: " + day);
-  $("#score").text("BLUE " + blueScore + " RED " + redScore);
+  $("#score").text("COBALT " + blueScore + " CRIMSON " + redScore);
   // console.log(winner)
   // startGame()
 }
@@ -211,7 +211,7 @@ function win(teamColor) {
 //ending a round (activated around each round)
 //nested within activate
 function endRound() {
-  transitionActivate();
+  // transitionActivate();
   eightBall();
   wrongAgent();
   correctAgent();
@@ -248,12 +248,8 @@ function wrongAgent() {
 function correctAgent() {
   clueValue--
   if (clueValue == 0 && currentPlayer === "blueFA") {
-    // console.log(clueValue);
-    console.log("blue got all the correct agent activated");
     redSMmove();
   } else if (clueValue == 0 && currentPlayer === "blueFA") {
-    // console.log(clueValue);
-    console.log("red got the correct agent activated");
     blueSMmove();
   };
 };
@@ -266,14 +262,7 @@ function foundAllAgent() {
   }
 }
 
-/*
-  if (currentPlayer === "blueFA" && #box selected# !== "blue" ) {
-    round ends
-  } (currentPlayer === "redFA" && #box selected# !== "red" ) {
-    round ends
-  }
 
-  */
 //3. end by player decision (player interaction)
 
 
@@ -298,13 +287,22 @@ function renderFA() {
 
 function renderSM() {
   for (var i =0; i < 25; i++) {
-    $('.word_box').eq(i).css('background', board[i].color)
+  var bc = "";
+    if (board[i].color === "blue") {
+      bc = "-webkit-linear-gradient(top, #77BFC7 0%, #3b80c0 100%)";
+    } else if (board[i].color === "red") {
+      bc = "-webkit-linear-gradient(top, #F75D59 0%,#e4201b 100%)";
+    } else if (board[i].color === "black") {
+      bc = "-webkit-linear-gradient(top, #757575 0%,#424242 100%)";
+    } else {
+      bc = board[i].color;
+    }
+    $('.word_box').eq(i).css('background', bc)
     if (board[i].clicked === true) {
-      $("#box"+i).text("UNAVAILABLE").css('background', board[i].color);
+      $("#box"+i).text("UNAVAILABLE").css('background', bc);
     }
   }
 }
-
 // render for amount of sleeper agent
 
 function renderRemainingSA() {
@@ -505,26 +503,22 @@ $("#refreshWords").on('click', function() {
 // Transitional Screen
 
 
-
-var $center = $(".center");
-
-
-// $("<div><h1>BLUE WINS</h1><button>Play Again!</button></div>").css({position: "fixed", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "indianred", color: "white"})
-// [
 // function for clicking action on word card
+//*
 
-function transitionActivate() {
-  console.log("transition actived")
-  if (board[indexClicked].color === "blue" && currentTeam === "red") {
-      transitionPage($('#blueactivate'));
-    } else if (board[indexClicked].color === "red" && currentTeam === "blue") {
-      transitionPage($('#redactivate'));
-    } else if (board[indexClicked].color === "black")  {
-    transitionPage($('#death'));
-    }
-}
+// this create bug not in use right now
+// function transitionActivate() {
+//   console.log("transition actived")
+//   if (board[indexClicked].color === "blue" && currentTeam === "red") {
+//       transitionPage($('#blueactivate'));
+//     } else if (board[indexClicked].color === "red" && currentTeam === "blue") {
+//       transitionPage($('#redactivate'));
+//     } else if (board[indexClicked].color === "black")  {
+//     transitionPage($('#death'));
+//     }
+// }
 
-
+//
 
 function transitionPage(transition,time) {
   var $clone = $(transition).clone()
@@ -536,28 +530,3 @@ function transitionPage(transition,time) {
     });
 
 }
-// function transitionSMsubmit() {
-//   var $clone = $("#sm-transition").clone()
-//   $clone.appendTo($("div:first"));
-//   $clone.slideToggle(1000);
-//   $("#accept").on("click", function() {
-//     duration = 180;
-//     $clone.remove();
-//     });
-
-// }
-
-// showText($("div:first"),"BLUE AGENT CONTACTED",index, 1000);
-
-// var showText = function (target, message, index, interval) {
-//  if (index < message.length) {
-//    $(target).append(message[index++]);
-//    setTimeout(function () { showText(target, message, index, interval); }, interval);
-//  }
-// }
-
-// transitionPage("#sm-transition")
-
-
-// typing animation
-

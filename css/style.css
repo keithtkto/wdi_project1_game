@@ -15,6 +15,11 @@ body {
   */
 }
 
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
 h1 {
     font-size: 40px;
     margin-top: 10px;
@@ -277,6 +282,7 @@ div.timer {
   font-weight: 500px;
   display: inline;
   margin-left: -200px;
+  font-family: monospace;
 }
 
 
