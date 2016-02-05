@@ -4,31 +4,6 @@ console.log("EECOM GO");
 console.log("SURGEON GO");
 console.log("CAPCOM, We're GO for Powered Descent.");
 
-
-
-
-//Timer
-var display = $('#time');
-
-var startTimer = function(display) {
-    // var timer = duration;
-    setInterval(function () {
-        var minutes = parseInt(duration / 60, 10),
-            seconds = parseInt(duration % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.text(minutes + ":" + seconds);
-
-        if (--duration < 0) {
-            display.text("HURRY!!");;
-        }
-    }, 1000);
-}
-
-
-
 // global var
 var redSleeperAgents  = 0,
     blueSleeperAgents = 0,
@@ -37,7 +12,6 @@ var redSleeperAgents  = 0,
     redScore          = 0,
     blueScore         = 0,
     duration          = 180,
-    winner            = "", //'blue' 'red' is a user input, default blue
     currentPlayer     = "", //"blueFA", "redSM","redFA" //SM = spymaster FA = field agent
     currentTeam       = "", // blue" or "red"
     startingTeam      = "", //"blue" or "red"
@@ -65,12 +39,11 @@ redStock  = Array(25).fill("red", 0, 9)
                      .fill("#fff2e5", 17, 24)
                      .fill("black", 24, 25);
 
-// jQuery Variable
+
 /* Model */
 
 /* create game board */
 // 1. click to start
-startTimer(display);
 
 /* game operation */
 function startGame() {
@@ -91,9 +64,8 @@ setTimeout(renderSM, 1000);
 
 
 // 1. MOVES
-
 function blueSMmove() {
-  transitionPage($("#uplink"),900);
+  // transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA();
   disableSubmit();
@@ -112,7 +84,7 @@ function blueFAmove() {
 };
 
 function redSMmove() {
-  transitionPage($("#uplink"),900);
+  // transitionPage($("#uplink"),900);
   duration = 180;
   renderRemainingSA()
   disableSubmit();
@@ -193,19 +165,20 @@ function wordInBox() {
 
 //okay
 function win(teamColor) {
+  $('div#uplink').remove()
   if (teamColor === "blue") {
     blueScore += 1;
+    winningPage("#bluewins", 1500);
     console.log("BLUE WINS!");
   } else {
     redScore += 1;
     console.log("RED WINS!");
+    winningPage("#redwins", 1500);
   }
   day = 0;
   mission += 1;
   $("#day").text("MISSION: " + mission + " DAY: " + day);
   $("#score").text("COBALT " + blueScore + " CRIMSON " + redScore);
-  // console.log(winner)
-  // startGame()
 }
 
 //ending a round (activated around each round)
@@ -236,9 +209,11 @@ function eightBall() {
 function wrongAgent() {
   if (currentPlayer === "blueFA" && board[indexClicked].color !== "blue" && board[indexClicked].clicked === true) {
     console.log("blue team round ends", board[indexClicked])
+    transitionPage($("#uplink"),900);
     redSMmove();
   } else if (currentPlayer === "redFA" && board[indexClicked].color !== "red" && board[indexClicked].clicked === true) {
     console.log("red team round ends", board[indexClicked])
+    transitionPage($("#uplink"),900);
     blueSMmove();
   };
 };
@@ -248,8 +223,10 @@ function wrongAgent() {
 function correctAgent() {
   clueValue--
   if (clueValue == 0 && currentPlayer === "blueFA") {
+    transitionPage($("#uplink"),900);
     redSMmove();
   } else if (clueValue == 0 && currentPlayer === "blueFA") {
+    transitionPage($("#uplink"),900);
     blueSMmove();
   };
 };
@@ -265,10 +242,7 @@ function foundAllAgent() {
 
 //3. end by player decision (player interaction)
 
-
-
 /* Render */
-
 // render for field agent
 
 function renderFA() {
@@ -281,7 +255,6 @@ function renderFA() {
     }
   }
 }
-
 
 // render for Spymaster
 
@@ -520,6 +493,24 @@ $("#refreshWords").on('click', function() {
 
 //
 
+function winningPage(transition,time) {
+  var $winClone = $(transition).clone()
+  $winClone.appendTo($("div:first"));
+  $winClone.slideToggle(time);
+  $("#accept").on("click", function() {
+    duration = 180;
+    $winClone.remove();
+    startingTeam === "blue" ? startingTeam = "red"  :
+                           startingTeam = "blue" ;
+    startGame();
+    if (currentTeam === "blue") {
+      blueSMmove();
+    } else if (currentTeam === "red") {
+      redSMmove();
+    }
+  });
+}
+
 function transitionPage(transition,time) {
   var $clone = $(transition).clone()
   $clone.appendTo($("div:first"));
@@ -530,3 +521,24 @@ function transitionPage(transition,time) {
     });
 
 }
+
+//Timer
+var display = $('#time');
+
+var startTimer = function(display) {
+    // var timer = duration;
+    setInterval(function () {
+        var minutes = parseInt(duration / 60, 10),
+            seconds = parseInt(duration % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--duration < 0) {
+            display.text("HURRY!!");;
+        }
+    }, 1000);
+}
+startTimer(display);
