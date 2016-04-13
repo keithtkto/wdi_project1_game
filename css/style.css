@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: white;
+  background: white !important;
 }
 
 a {
@@ -83,8 +83,8 @@ li {
 
 footer {
   text-align: center;
-  color: blue;
-  font-size: -1px ;
+  color: black;
+  font-size: -1px;
   line-height: 1.1;
   font-weight: 100;
 }
